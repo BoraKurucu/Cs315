@@ -1,0 +1,85 @@
+
+program-> <list>  EOF
+
+<list>  → <declaration> | <list> <declaration> 
+<declaration> → <func_decl> | <stmt>
+
+<func_decl>  → FUNCTION identifier LP <argument_list> RP <block> 
+
+<argument_list> → identifier | <argument_list> COMMA identifier
+
+<stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> 
+
+
+
+<return_stmt> →  RETURN <expr_stmt> 
+<non_if_stmt> →  <expr_stmt>  | <loop_stmt> | <return_stmt> | <block>
+
+<if_stmt> → <matched> | <unmatched>
+
+
+<matched> → IF LP <comparison_expr> RP <matched> ELSE <matched> | <non_if_stmt>
+
+<unmatched> → IF  LP <comparison_expr> RP <stmt>
+ |IF  LP <comparison_expr> RP  <matched> ELSE <unmatched>
+
+
+
+<loop_stmt> → <for_stmt> | <while_stmt> 
+
+
+
+<while_stmt> → WHILE LP   <comparison_expr>   RP <block> |
+			   WHILE LP   <comparison_expr>   RP  <expr_stmt>
+
+<for_stmt> → FOR LP <assn_stmt>  <comparison_expr>  <expr> RP <block> |
+			 FOR LP <assn_stmt>  <comparison_expr>  <expr> RP  <expr_stmt>
+			 
+
+
+<block> → LB <stmt> RB
+
+
+<comparison_expr> →  <number_expr> <general_comp_op> <number_addt> SC |  <set_expr>  <general_comp_op> <set_arith> SC | <empty> SC
+
+<assn_stmt>  → <string_assn> SC | <set_assn>  SC | <number_assn> SC 
+
+
+
+<expr> → <number_expr> | <set_expr> 
+<expr_stmt> → <number_expr> SC | <set_expr> SC
+
+<string_assn> →  <identifier> ASSN_OP <string> 
+
+<number_assn> → <identifier> ASSN_OP <number_expr> 
+<number_expr> →  <number_expr>  <general_comp_op> <number_addt> | <number_addt>
+<number_addt> →  <number_addt>  <number_addition_op> <number_mult> | <number_mult> 
+<number_mult>  →   <number_mult> <number_multiplication_op>  <number_factor> | <number_factor> 
+<number_factor>  →  <number> | <identifier > | LP <number_expr> RP | <set_size>
+
+
+
+
+<set_assn> → <identifier> ASSN_OP <set_expr> 
+<set_expr> →  <set_expr>  <general_comp_op> <set_arith> | <set_arith>
+<set_arith> →  <set_arith>  <set_arith_op> <set_unary> | <set_unary> 
+<set_unary>  →   <set_unary_op> <set_basic> 
+<set_basic>   →  <set> | <identifier > | LP <set_expr> RP
+
+
+
+<set_pull>  → <identifier> PULL_OP <primary> SC
+<set_push>  → <identifier> PUSH_OP <primary> SC
+<set_size>  → CARDINALITY <identifier>  | CARDINALITY <set> 
+
+<general_comp_op > → LT | LEQ | GT | GEQ | EE | NE
+
+<set_arith_op> → UNION | INTERSECTION |  DIFF | SYMMETRIC_DIFF 
+<set_unary_op> POWERSET
+
+
+<basic_addition_op > → PLUS|MINUS
+<basic_multiplication_op > → MULTIPLY|DIVIDE
+
+<primary> → <number> | <string> | <set> | <identifier>
+<empty> →
