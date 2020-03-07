@@ -7,7 +7,7 @@ alphanumeric  {letter}+({digit}|{letter})*
 string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
-comment       \/\/[^\n]*
+comment       "//".*
 %%
 comment 			printf("COMMENT");
 while               printf("WHILE");
