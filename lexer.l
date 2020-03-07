@@ -4,7 +4,13 @@ digit         [0-9]
 signs         [+-]
 number        {signs}?{digit}*(\.)?{digit}+
 alphanumeric  {letter}+{(digit|letter)*}
+string        \"[^\"]*\"
+set           \{[((({number}|{string}|{alphanumeric})\,)*)({number}|{string}|{alphanumeric})]\}
 %%
+(alphanumeric)      printf("IDENTIFIER")
+(number)            printf("NUMBER")
+(string)            printf("STRING")
+(set)               printf("SET")
 \(                  printf("LP")
 \)                  printf("RP")
 \{                  printf("LB")
