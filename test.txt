@@ -51,21 +51,44 @@ int1 = 5.3 * 3;
 int1 = 5.4 / 3;
 int1 = ((5 + 8.5) * (5 / 3.8) + int2);
 
-// statements
-if (a > 5) {
-  a = 5;
-}
-
 set3 = ^set1;
 size = #set1;
-
 set3 = ((set1 :+ set2) :+ ({1,2,3} :- ( set1 :- set2)) :+ (set1 :& set2));
+
+
+// statements
 
 if (a > 5) {
   a = 5;
 }
+
+if (a > 5) {
+  a = 5;
+}
+else
+{
+	a = 7;
+}
+
+if (a > 5) {
+  a = 5;
+}
+else if(a < 10)
+{
+	a = 7;
+}
+else
+a = 10;
+
 while(a < 10)
   a = a + 2;
 
 for (i : set1)
   print(i);
+  
+for (i : set1)
+{
+  i = i * 3;
+  i = i - 7;
+  print(i);
+}

@@ -9,6 +9,7 @@ element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 comment       \/\/[^\n]
 %%
+comment 			printf("COMMENT");
 while               printf("WHILE");
 for                 printf("FOR");
 return              printf("RETURN");
