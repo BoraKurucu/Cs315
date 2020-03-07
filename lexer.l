@@ -45,6 +45,3 @@ else                printf("ELSE");
 \=\=                printf("EE");
 \!\=                printf("NE");
 [\0]                printf("EOF");
-
-%%
-int yywrap() { return 1; }
