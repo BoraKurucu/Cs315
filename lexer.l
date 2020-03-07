@@ -9,10 +9,10 @@ element       ({number}|{string}|{alphanumeric})
 set           \{([(({element}\,)*){element}])?\}
 %%
 \=                  printf("ASSN_OP");
-(alphanumeric)      printf("IDENTIFIER");
-(number)            printf("NUMBER");
-(string)            printf("STRING");
-(set)               printf("SET");
+{alphanumeric}      printf("IDENTIFIER");
+{number}            printf("NUMBER");
+{string}            printf("STRING");
+{set}               printf("SET");
 \(                  printf("LP");
 \)                  printf("RP");
 \{                  printf("LB");
