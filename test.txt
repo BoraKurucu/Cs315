@@ -58,7 +58,7 @@ set3 = ((set1 :+ set2) :+ ({1,2,3} :- ( set1 :- set2)) :+ (set1 :& set2));
 
 
 // statements
-
+a = 3;
 if (a > 5) {
   a = 5;
 }
