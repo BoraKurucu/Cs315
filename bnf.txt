@@ -8,7 +8,7 @@ program-> <list>  EOF
 
 <argument_list> → identifier | <argument_list> COMMA identifier
 
-<stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> 
+<stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> | <print_stmt>
 
 
 
@@ -33,8 +33,13 @@ program-> <list>  EOF
 			   WHILE LP   <comparison_expr>   RP  <expr_stmt>
 
 <for_stmt> → FOR LP <assn_stmt>  <comparison_expr>  <expr> RP <block> |
-			 FOR LP <assn_stmt>  <comparison_expr>  <expr> RP  <expr_stmt>
-			 
+			 FOR LP <assn_stmt>  <comparison_expr>  <expr> RP  <expr_stmt> | <iterative_for>
+
+
+<iterative_for> →  FOR LP <identifier> COLON <identifier> RP <expr_stmt>  |  FOR LP <identifier> COLON <set> RP <expr_stmt>
+
+
+<print_stmt> → PRINT LP <expr> RP SC 		 
 
 
 <block> → LB <stmt> RB
