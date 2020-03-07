@@ -7,6 +7,7 @@ alphanumeric  {letter}+{(digit|letter)*}
 string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
+comment       \/\/[^\n]
 %%
 {alphanumeric}      printf("IDENTIFIER");
 {number}            printf("NUMBER");
