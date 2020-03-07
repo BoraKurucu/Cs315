@@ -20,12 +20,28 @@ string2 = "This is another string"
 set2 = {1,2,3};
 
 
+
+
 //advanced assignments
+
 set1 = set1 :+ set2;
+set1 = set1 :- set2;
+set1 = set1 :- set2;
+set1 = set1 :& set2;
 
 
+set1 << 5;
+set1 << "added an element";
+set1 >> int1;
+set1 >> 5;
+set1 >> "removed an element";
+set1 << int1;
 
 
+set3 = ^set1;
+size = #set1;
+
+set3 = ((set1 :+ set2) :+ ({1,2,3} :- ( set1 :- set2)) :+ (set1 :& set2));
 
 
 
