@@ -8,11 +8,18 @@ string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 %%
-\=                  printf("ASSN_OP");
 {alphanumeric}      printf("IDENTIFIER");
 {number}            printf("NUMBER");
 {string}            printf("STRING");
 {set}               printf("SET");
+\=                  printf("ASSN_OP");
+\:\-				printf("DIFF");
+\:\+				printf("UNION");
+\:\&                printf("INTERSECTION");
+\>\>				printf("PULL_OP");
+\<\<                printf("PUSH_OP");
+\#                  printf("CARDINALITY");
+\^                  printf("POWERSET");
 \(                  printf("LP");
 \)                  printf("RP");
 \{                  printf("LB");
@@ -25,15 +32,18 @@ set           \{(({element}\,)*{element})?\}
 \/                  printf("DIVIDE");
 \-                  printf("MINUS");
 \<                  printf("LT");
-\<\=                printf("LTE");
+\<\=                printf("LEQ");
 \>                  printf("GT");
-\>\=                printf("GTE");
+\>\=                printf("GEQ");
+\=\=                return(EE);
+\!\=                return(NE);
 while               printf("WHILE");
 for                 printf("FOR");
 return              printf("RETURN");
-print 				      printf("PRINT");
+print 				printf("PRINT");
 if                  printf("IF");
 else                printf("ELSE");
 [\0]                printf("EOF")
+
 %%
 int yywrap() { return 1; }

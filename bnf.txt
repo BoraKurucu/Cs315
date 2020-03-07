@@ -80,7 +80,7 @@ program-> <list>  EOF
 
 <general_comp_op > → LT | LEQ | GT | GEQ | EE | NE
 
-<set_arith_op> → UNION | INTERSECTION |  DIFF | SYMMETRIC_DIFF 
+<set_arith_op> → UNION | INTERSECTION |  DIFF  
 <set_unary_op> POWERSET
 
 
