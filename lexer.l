@@ -7,9 +7,8 @@ alphanumeric  {letter}+({digit}|{letter})*
 string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
-comment       "//".*
 %%
-comment 			printf("COMMENT");
+"//".* 			        printf("COMMENT");
 while               printf("WHILE");
 for                 printf("FOR");
 return              printf("RETURN");
