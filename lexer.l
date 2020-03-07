@@ -7,7 +7,6 @@ alphanumeric  {letter}+({digit}|{letter})*
 string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
-bool          true | false
 %%
 "//".* 			        printf("COMMENT ");
 while               printf("WHILE ");
@@ -21,7 +20,7 @@ function            printf("FUNCTION ");
 {number}            printf("NUMBER ");
 {string}            printf("STRING ");
 {set}               printf("SET ");
-{bool}              printf("BOOL ");
+true|false          printf("BOOL ");
 \=                  printf("ASSN_OP ");
 \:\-				        printf("DIFF_OP ");
 \:\+				        printf("UNION_OP ");
