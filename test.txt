@@ -5,14 +5,15 @@ int1;
 int2;
 string1;
 string2;
+
 function f1() {
   print("here");
 }
 
 function f2(a,b,c) {
-  print(a)
-  print(b)
-  print(c)
+  print(a);
+  print(b);
+  print(c);
   return a + b + c;
 }
 
@@ -62,8 +63,16 @@ if (a > 5) {
   a = 5;
 }
 
-if (a < 5) {
+
+if (a > 5 && a < 10 || a < 7 ) {
   a = 5;
+}
+
+if (a < 5) {
+  if(a != 10)
+  a = 5;
+  else
+  a = 7;
 }
 else
 {
@@ -73,9 +82,11 @@ else
 if (a >= 5) {
   a = 5;
 }
-else if(a <= 10)
+x =  true;
+else if( ( a <= 10 && x == false)  || x == true )
 {
 	a = 7;
+	x = true;
 }
 else if (a == 9)
 a = 10;
@@ -87,6 +98,15 @@ a = 10;
 while(a < 10)
   a = a + 2;
 
+  
+ while(a < 10)
+ {
+  if(a % 2 == 0)
+  a = a + 2;
+  else
+  a = 5;
+ }
+  
 for (i : set1)
   print(i);
   
@@ -96,3 +116,4 @@ for (i : set1)
   i = i - 7;
   print(i);
 }
+while(true)

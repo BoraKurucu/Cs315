@@ -7,6 +7,7 @@ alphanumeric  {letter}+({digit}|{letter})*
 string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
+bool           ( {true} | {false})
 %%
 "//".* 			        printf("COMMENT ");
 while               printf("WHILE ");
@@ -15,11 +16,12 @@ return              printf("RETURN ");
 print 				      printf("PRINT ");
 if                  printf("IF ");
 else                printf("ELSE ");
-function            printf("FUNCTION ");
+function            printf("FUNCTION ");                  
 {alphanumeric}      printf("IDENTIFIER ");
 {number}            printf("NUMBER ");
 {string}            printf("STRING ");
 {set}               printf("SET ");
+{bool}              printf("BOOL ");
 \=                  printf("ASSN_OP ");
 \:\-				        printf("DIFF_OP ");
 \:\+				        printf("UNION_OP ");
@@ -38,7 +40,10 @@ function            printf("FUNCTION ");
 \+                  printf("PLUS_OP ");
 \*                  printf("MULTIPLY_OP ");
 \/                  printf("DIVIDE_OP ");
+\%                  printf("MOD_OP ");
 \-                  printf("MINUS_OP ");
+\&\&                printf("AND ");
+\|\|                printf("OR ");
 \<                  printf("LT ");
 \<\=                printf("LEQ ");
 \>                  printf("GT ");
