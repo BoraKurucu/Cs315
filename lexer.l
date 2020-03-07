@@ -9,6 +9,12 @@ element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 comment       \/\/[^\n]
 %%
+while               printf("WHILE");
+for                 printf("FOR");
+return              printf("RETURN");
+print 				      printf("PRINT");
+if                  printf("IF");
+else                printf("ELSE");
 {alphanumeric}      printf("IDENTIFIER");
 {number}            printf("NUMBER");
 {string}            printf("STRING");
@@ -38,13 +44,7 @@ comment       \/\/[^\n]
 \>\=                printf("GEQ");
 \=\=                printf("EE");
 \!\=                printf("NE");
-while               printf("WHILE");
-for                 printf("FOR");
-return              printf("RETURN");
-print 				      printf("PRINT");
-if                  printf("IF");
-else                printf("ELSE");
-[\0]                printf("EOF")
+[\0]                printf("EOF");
 
 %%
 int yywrap() { return 1; }
