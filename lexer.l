@@ -5,7 +5,8 @@ signs         [+-]
 number        {signs}?{digit}*(\.)?{digit}+
 alphanumeric  {letter}+{(digit|letter)*}
 string        \"[^\"]*\"
-set           \{[((({number}|{string}|{alphanumeric})\,)*)({number}|{string}|{alphanumeric})]\}
+element       ({number}|{string}|{alphanumeric})
+set           \{([(({element}\,)*){element}])?\}
 %%
 \=                  printf("ASSN_OP");
 (alphanumeric)      printf("IDENTIFIER");
