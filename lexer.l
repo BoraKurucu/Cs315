@@ -15,6 +15,7 @@ return              printf("RETURN ");
 print 				      printf("PRINT ");
 if                  printf("IF ");
 else                printf("ELSE ");
+function            printf("FUNCTION ");
 {alphanumeric}      printf("IDENTIFIER ");
 {number}            printf("NUMBER ");
 {string}            printf("STRING ");
