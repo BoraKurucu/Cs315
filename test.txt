@@ -79,8 +79,10 @@ else if(a <= 10)
 }
 else if (a == 9)
 a = 10;
+else if ( a != 8)
+a = 7;
 else
-a = 8;
+a = 10;
 
 while(a < 10)
   a = a + 2;
