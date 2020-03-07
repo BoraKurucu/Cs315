@@ -31,7 +31,7 @@ set           \{([(({element}\,)*){element}])?\}
 while               printf("WHILE");
 for                 printf("FOR");
 return              printf("RETURN");
-print 				printf("PRINT")
+print 				      printf("PRINT");
 if                  printf("IF");
 else                printf("ELSE");
 [\0]                printf("EOF")
