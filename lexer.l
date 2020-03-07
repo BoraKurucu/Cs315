@@ -7,7 +7,7 @@ alphanumeric  {letter}+({digit}|{letter})*
 string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
-bool           ( {true} | {false})
+bool           ( true | false)
 %%
 "//".* 			        printf("COMMENT ");
 while               printf("WHILE ");
