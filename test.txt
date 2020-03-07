@@ -5,8 +5,16 @@ int1;
 int2;
 string1;
 string2;
-function f1();
-function f2(a,b,c);
+function f1() {
+  print("here");
+}
+
+function f2(a,b,c) {
+  print(a)
+  print(b)
+  print(c)
+  return a + b + c;
+}
 
 //basic assignments
 set1 = {};
@@ -16,19 +24,26 @@ set1 = {"element1",2,3};
 int1 = 5;
 int2 = 24.7;
 string1 = "This is a string";
-string2 = "This is another string"
+string2 = "This is another string";
 set2 = {1,2,3};
 
 
 //advanced assignments
 set1 = set1 :+ set2;
 
+int1 = 5 + 3;
+int1 = 5 + 3.4;
+int1 = 5.3 * 3;
+int1 = 5.4 / 3;
+int1 = ((5 + 8.5) * (5 / 3.8) + int2);
 
-
-
-
-
-
+// statements
 if (a > 5) {
-  a = 5
+  a = 5;
 }
+
+while(a < 10)
+  a = a + 2
+
+for (i : set1)
+  print(i)
