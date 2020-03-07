@@ -1,5 +1,4 @@
-
-program-> <list>  EOF
+<program> -> <list> 
 
 <list>  → <declaration> | <list> <declaration> 
 <declaration> →  <var_decl> | <func_decl> | <stmt>

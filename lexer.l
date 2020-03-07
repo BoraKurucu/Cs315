@@ -44,4 +44,3 @@ else                printf("ELSE");
 \>\=                printf("GEQ");
 \=\=                printf("EE");
 \!\=                printf("NE");
-[\0]                printf("EOF");
