@@ -2,8 +2,9 @@
 program-> <list>  EOF
 
 <list>  → <declaration> | <list> <declaration> 
-<declaration> → <func_decl> | <stmt>
+<declaration> →  <var_decl> | <func_decl> | <stmt>
 
+<var_decl> → identifier SC 
 <func_decl>  → FUNCTION identifier LP <argument_list> RP <block> 
 
 <argument_list> → identifier | <argument_list> COMMA identifier
