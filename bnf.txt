@@ -36,7 +36,8 @@
 			 FOR LP <assn_stmt>  <logic_expr>  <expr> RP  <expr_stmt> | <iterative_for>
 
 
-<iterative_for> →  FOR LP IDENTIFIER COLON IDENTIFIER RP <expr_stmt>  |  FOR LP IDENTIFIER COLON SET RP <expr_stmt>
+<iterative_for> →  FOR LP IDENTIFIER COLON IDENTIFIER RP <expr_stmt>  |  FOR LP IDENTIFIER COLON SET RP <expr_stmt> |
+	FOR LP IDENTIFIER COLON IDENTIFIER RP <block>  |  FOR LP IDENTIFIER COLON SET RP <block>
 
 
 <print_stmt> → PRINT LP <expr> RP SC 		 
