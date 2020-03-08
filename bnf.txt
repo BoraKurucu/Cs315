@@ -64,7 +64,8 @@
 <number_assn> → IDENTIFIER ASSN_OP <number_expr> 
 <number_expr> →  <number_expr>  <general_comp_op> <number_addt> | <number_addt>
 <number_addt> →  <number_addt>  <number_addition_op> <number_mult> | <number_mult> 
-<number_mult>  →   <number_mult> <number_multiplication_op>  <number_factor> | <number_factor> 
+<number_mult>  →   <number_mult> <number_multiplication_op>  <number_call> | <number_call>
+<number_call> → IDENTIFIER LP <argument_list> RP | <number_factor>
 <number_factor>  →  NUMBER | <IDENTIFIER > | LP <number_expr> RP | <set_size>
 
 
@@ -73,7 +74,8 @@
 <set_assn> → IDENTIFIER ASSN_OP <set_expr> 
 <set_expr> →  <set_expr>  <general_comp_op> <set_arith> | <set_arith>
 <set_arith> →  <set_arith>  <set_arith_op> <set_unary> | <set_unary> 
-<set_unary>  →   <set_unary_op> <set_basic> 
+<set_unary>  →   <set_unary_op> <set_basic> | <set_call>
+<set_call> -> IDENTIFIER LP <argument_list> RP | <set_basic>
 <set_basic>   →  SET | <IDENTIFIER > | LP <set_expr> RP
 
 
