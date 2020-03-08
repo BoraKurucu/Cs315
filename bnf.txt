@@ -3,10 +3,10 @@
 <list>  → <declaration> | <list> <declaration> 
 <declaration> →  <var_decl> | <func_decl> | <stmt>
 
-<var_decl> → identifier SC 
-<func_decl>  → FUNCTION identifier LP <argument_list> RP <block> 
+<var_decl> → IDENTIFIER SC 
+<func_decl>  → FUNCTION IDENTIFIER LP <argument_list> RP <block> 
 
-<argument_list> → identifier | <argument_list> COMMA identifier
+<argument_list> → IDENTIFIER | <argument_list> COMMA IDENTIFIER
 
 <stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> | <print_stmt>
 
@@ -36,7 +36,7 @@
 			 FOR LP <assn_stmt>  <logic_expr>  <expr> RP  <expr_stmt> | <iterative_for>
 
 
-<iterative_for> →  FOR LP <identifier> COLON <identifier> RP <expr_stmt>  |  FOR LP <identifier> COLON <set> RP <expr_stmt>
+<iterative_for> →  FOR LP IDENTIFIER COLON IDENTIFIER RP <expr_stmt>  |  FOR LP IDENTIFIER COLON SET RP <expr_stmt>
 
 
 <print_stmt> → PRINT LP <expr> RP SC 		 
@@ -55,31 +55,31 @@
 <expr> → <number_expr> | <set_expr> 
 <expr_stmt> → <number_expr> SC | <set_expr> SC
 
-<string_assn> →  <identifier> ASSN_OP <string> 
+<string_assn> →  IDENTIFIER ASSN_OP STRING 
 
 
-<bool _assn> → <identifier> ASSN_OP <bool> 
+<bool _assn> → IDENTIFIER ASSN_OP <bool> 
 
-<number_assn> → <identifier> ASSN_OP <number_expr> 
+<number_assn> → IDENTIFIER ASSN_OP <number_expr> 
 <number_expr> →  <number_expr>  <general_comp_op> <number_addt> | <number_addt>
 <number_addt> →  <number_addt>  <number_addition_op> <number_mult> | <number_mult> 
 <number_mult>  →   <number_mult> <number_multiplication_op>  <number_factor> | <number_factor> 
-<number_factor>  →  <number> | <identifier > | LP <number_expr> RP | <set_size>
+<number_factor>  →  NUMBER | <IDENTIFIER > | LP <number_expr> RP | <set_size>
 
 
 
 
-<set_assn> → <identifier> ASSN_OP <set_expr> 
+<set_assn> → IDENTIFIER ASSN_OP <set_expr> 
 <set_expr> →  <set_expr>  <general_comp_op> <set_arith> | <set_arith>
 <set_arith> →  <set_arith>  <set_arith_op> <set_unary> | <set_unary> 
 <set_unary>  →   <set_unary_op> <set_basic> 
-<set_basic>   →  <set> | <identifier > | LP <set_expr> RP
+<set_basic>   →  SET | <IDENTIFIER > | LP <set_expr> RP
 
 
 
-<set_pull>  → <identifier> PULL_OP <primary> SC
-<set_push>  → <identifier> PUSH_OP <primary> SC
-<set_size>  → CARDINALITY_OP <identifier>  | CARDINALITY_OP <set> 
+<set_pull>  → IDENTIFIER PULL_OP <primary> SC
+<set_push>  → IDENTIFIER PUSH_OP <primary> SC
+<set_size>  → CARDINALITY_OP IDENTIFIER  | CARDINALITY_OP SET 
 
 <general_comp_op > → LT | LEQ | GT | GEQ | EE | NE
 
@@ -90,5 +90,5 @@
 <basic_addition_op > → PLUS_OP|MINUS_OP
 <basic_multiplication_op > → MULTIPLY_OP|DIVIDE_OP|MOD_OP
 
-<primary> → <number> | <string> | <set> | <identifier>
+<primary> → NUMBER | STRING | SET | IDENTIFIER
 <empty> →
