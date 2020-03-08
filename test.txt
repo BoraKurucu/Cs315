@@ -125,3 +125,6 @@ if(y || set1 >= set2 || set1 == set2 || x == true)
 a = 4.7;
 a = a + 3;
 }
+
+// function calls
+a = f2(a, b, c);
