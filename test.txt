@@ -116,3 +116,12 @@ for (i : set1)
   i = i - 7;
   print(i);
 }
+//x = if set2 is subset of set1 or equal to set1
+x = ( set2 <= set1);
+// y = if set1 is superset of set2;
+y = set1 > set2;
+if(y | set1 >= set2 | set1 == set2 | x == true)
+{
+a = 4.7;
+a = a + 3;
+}
