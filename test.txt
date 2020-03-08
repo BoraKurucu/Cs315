@@ -120,7 +120,7 @@ for (i : set1)
 x = ( set2 <= set1);
 // y = if set1 is superset of set2;
 y = set1 > set2;
-if(y || set1 >= set2 || set1 == set2 || x == true)
+if( set1 >= set2 || set1 == set2 || x == true)
 {
 a = 4.7;
 a = a + 3;
