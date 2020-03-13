@@ -54,4 +54,6 @@ setDelete	    return(SET_DELETE);
 \=\=                return(EE);
 \!\=                return(NE);
 \-\>                return(ARROW); 
+[ \t\n]             ;
 %%
+int yywrap() { return 1; }
