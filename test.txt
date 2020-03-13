@@ -22,6 +22,9 @@ set1 = {};
 set1 = {1,2,3};
 set1 = {"element"};
 set1 = {"element1",2,3};
+set1 = { 1,{2,3},x,{y}};
+set1 = {{y},a,{y,a,b,5}};
+set1 = {{1},{},{2}};
 int1 = 5;
 int2 = 24.7;
 string1 = "This is a string";
@@ -37,7 +40,7 @@ set1 = set1 :+ set2;
 set1 = set1 :- set2;
 set1 = set1 :- set2;
 set1 = set1 :& set2;
-
+set1 = set1 :x set2;
 
 set1 << 5;
 set1 << "added an element";
@@ -144,7 +147,11 @@ set3->setDelete();
 x = set1->setContains(int1);
 x = set1->setContains(5);
 x = set1->setContains("Hello");
-x = set1-> setContains ( 1,2,3,4,5,"hello");
+x = set1-> setContains( 1,2,3,4,5,"hello");
+x = set1->setContains(1,{2,3},x,{y});
+x = set1->setContains({y},a,{y,a,b,5} );
+x = set1->setContains({{1},{},{2}});
+
 
 if(x == true)
 {
