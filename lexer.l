@@ -10,8 +10,8 @@ set           \{(({element}\,)*{element})?\}
 %%
 "//".* 			    printf("COMMENT ");
 setContains         printf("SET_CONTAINS");
-setDelete			printf(SET_DELETE);
-input				printf("INPUT");
+setDelete			printf("SET_DELETE ");
+input				printf("INPUT ");
 while               printf("WHILE ");
 for                 printf("FOR ");
 return              printf("RETURN ");
