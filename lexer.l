@@ -53,4 +53,5 @@ true|false          printf("BOOL ");
 \>\=                printf("GEQ ");
 \=\=                printf("EE ");
 \!\=                printf("NE ");
-%%
+\.                  printf("DOT ");  
+%% 
