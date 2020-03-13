@@ -14,7 +14,7 @@
 
 <delete_stmt> → SET_DELETE LP IDENTIFIER RP SC
 
-<contain_stmt> → SET_CONTAINS LP <primary> RP SC
+<contain_stmt> → SET_CONTAINS LP <primary> RP SC | SET_CONTAINS LP <number_expr> RP SC | SET_CONTAINS LP RP SC
 
 <return_stmt> →  RETURN <expr_stmt> 
 <non_if_stmt> →  <expr_stmt>  | <loop_stmt> | <return_stmt> | <block>
