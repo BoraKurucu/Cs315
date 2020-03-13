@@ -25,6 +25,7 @@ set1 = {"element1",2,3};
 set1 = { 1,{2,3},x,{y}};
 set1 = {{y},a,{y,a,b,5}};
 set1 = {{1},{},{2}};
+set1 = { 1*2,{2,3},x,{y}};
 int1 = 5;
 int2 = 24.7;
 string1 = "This is a string";
