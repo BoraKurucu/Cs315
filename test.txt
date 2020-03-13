@@ -129,3 +129,24 @@ a = a + 3;
 // function calls
 a = f2(a, b, c);
 f1();
+
+int1 = input();
+string1 = input("example.txt");
+set3;
+set3 = {1,2,3};
+
+set1 = set2 :x set3;
+set1 = set2 :x set3 :+ set2;
+
+set2->setDelete();
+set3->setDelete();
+
+x = set1->setContains(int1);
+x = set1->setContains(5);
+x = set1->setContains("Hello");
+x = set1-> setContains ( 1,2,3,4,5,"hello");
+
+if(x == true)
+{
+print("hello");
+}
