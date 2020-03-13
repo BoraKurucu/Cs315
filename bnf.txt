@@ -8,13 +8,12 @@
 
 <argument_list> → IDENTIFIER | <argument_list> COMMA IDENTIFIER
 
-<stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> | <print_stmt>| <delete_stmt> | <contain_stmt>
+<stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> | <print_stmt>| <delete_stmt> | 
 
 
 
 <delete_stmt> → IDENTIFIER ARROW SET_DELETE LP RP SC
 
-<contain_stmt> → IDENTIFIER ARROW SET_CONTAINS LP <primary> RP SC | IDENTIFIER ARROW SET_CONTAINS LP <expr> RP SC |IDENTIFIER ARROW SET_CONTAINS LP RP SC
 
 <return_stmt> →  RETURN <expr_stmt> 
 <non_if_stmt> →  <expr_stmt>  | <loop_stmt> | <return_stmt> | <block>
@@ -53,6 +52,10 @@
 
 <logic_expr> → <comparison_expr> | <logic_expr> <logic_op> <comparison_expr> 
 <comparison_expr> → <number_expr> <general_comp_op> <number_addt>  |  <set_expr>  <general_comp_op> <set_arith>  | <empty> | <bool>
+| <contain_expr>
+
+
+<contain_expr> →  IDENTIFIER ARROW SET_CONTAINS LP <primary> RP  | IDENTIFIER ARROW SET_CONTAINS LP <expr> RP  |IDENTIFIER ARROW SET_CONTAINS LP RP 
 
 <assn_stmt>  → <string_assn> SC | <set_assn>  SC | <number_assn> SC 
 
