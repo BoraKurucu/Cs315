@@ -12,9 +12,9 @@
 
 
 
-<delete_stmt> → SET_DELETE LP RP SC
+<delete_stmt> → IDENTIFIER ARROW SET_DELETE LP RP SC
 
-<contain_stmt> → IDENTIFIER DOT SET_CONTAINS LP <primary> RP SC | IDENTIFIER DOT SET_CONTAINS LP <expr> RP SC |IDENTIFIER DOT SET_CONTAINS LP RP SC
+<contain_stmt> → IDENTIFIER ARROW SET_CONTAINS LP <primary> RP SC | IDENTIFIER ARROW SET_CONTAINS LP <expr> RP SC |IDENTIFIER ARROW SET_CONTAINS LP RP SC
 
 <return_stmt> →  RETURN <expr_stmt> 
 <non_if_stmt> →  <expr_stmt>  | <loop_stmt> | <return_stmt> | <block>
