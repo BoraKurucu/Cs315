@@ -151,6 +151,7 @@ x = set1-> setContains( 1,2,3,4,5,"hello");
 x = set1->setContains(1,{2,3},x,{y});
 x = set1->setContains({y},a,{y,a,b,5} );
 x = set1->setContains({{1},{},{2}});
+x = set1->setContains({{1},{},{2}},"hello");
 
 
 if(x == true)
