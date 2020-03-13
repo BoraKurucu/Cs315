@@ -8,7 +8,10 @@ string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 %%
-"//".* 			        printf("COMMENT ");
+"//".* 			    printf("COMMENT ");
+setContains         printf("SET_CONTAINS");
+setDelete			printf(SET_DELETE);
+input				printf("INPUT");
 while               printf("WHILE ");
 for                 printf("FOR ");
 return              printf("RETURN ");
@@ -24,6 +27,7 @@ true|false          printf("BOOL ");
 \=                  printf("ASSN_OP ");
 \:\-				        printf("DIFF_OP ");
 \:\+				        printf("UNION_OP ");
+\:\x                printf("CARTESIAN_OP ");
 \:\&                printf("INTERSECTION_OP ");
 \>\>				        printf("PULL_OP ");
 \<\<                printf("PUSH_OP ");
