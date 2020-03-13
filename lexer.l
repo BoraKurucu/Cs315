@@ -21,17 +21,18 @@ true|false          return(BOOL);
 {number}            return(NUMBER);
 {string}            return(STRING);
 {set}               return(SET);
+input		            return(INPUT);
 \=                  return(ASSN_OP);
-\:\-		    return(DIFF_OP);
-\:\+		    return(UNION_OP);
+\:\-		            return(DIFF_OP);
+\:\+		            return(UNION_OP);
 \:\x                return(CARTESIAN_OP);
 \:\&                return(INTERSECTION_OP);
-\>\>		    return(PULL_OP);
+\>\>		            return(PULL_OP);
 \<\<                return(PUSH_OP);
 \#                  return(CARDINALITY_OP);
 \^                  return(POWERSET_OP);
 setContains         return(SET_CONTAINS);
-setDelete	    return(SET_DELETE);
+setDelete	          return(SET_DELETE);
 \(                  return(LP);
 \)                  return(RP);
 \{                  return(LB);
@@ -53,4 +54,7 @@ setDelete	    return(SET_DELETE);
 \=\=                return(EE);
 \!\=                return(NE);
 \-\>                return(ARROW); 
+[ \t\n]             ;
 %%
+int yywrap() { return 1; }
+
