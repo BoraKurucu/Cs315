@@ -21,6 +21,7 @@ true|false          return(BOOL);
 {number}            return(NUMBER);
 {string}            return(STRING);
 {set}               return(SET);
+input		    return(INPUT);
 \=                  return(ASSN_OP);
 \:\-		    return(DIFF_OP);
 \:\+		    return(UNION_OP);
