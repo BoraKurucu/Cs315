@@ -144,6 +144,7 @@ set3->setDelete();
 x = set1->setContains(int1);
 x = set1->setContains(5);
 x = set1->setContains("Hello");
+x = set1-> setContains ( 1,2,3,4,5,"hello");
 
 if(x == true)
 {
