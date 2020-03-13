@@ -58,7 +58,7 @@
 <contain_expr> →  IDENTIFIER ARROW SET_CONTAINS LP <set_element_end> RP | IDENTIFIER ARROW SET_CONTAINS LP <set_element_list> RP 
 
 <set_element_end> →  <set_element_list>  | <set_element_list_parant>  LP <set_element_list> RP
-<set_element_list_parant> → LP <set_element_list> RP | <set_element_list_parant> COMMA LP <set_element_list> RP
+<set_element_list_parant> → LB <set_element_list> RB | <set_element_list_parant> COMMA LB <set_element_list> RB
 
 
 <set_element_list> → <primary> | <set_element> <primary>
