@@ -52,9 +52,9 @@ print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC
 
 
 
-logic_expr : comparison_expr  | logic_expr logic_op comparison_expr
+logic_expr : comparison_expr  | logic_expr logic_op comparison_expr | bool_expr logic_op comparison_expr
 
-comparison_expr : number_expr general_comp_op number_addt  |  set_expr  general_comp_op set_arith  | bool_expr 
+comparison_expr : number_expr general_comp_op number_addt  |  set_expr  general_comp_op set_arith 
 
 
 
