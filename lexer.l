@@ -8,7 +8,8 @@ string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 %%
-"//".* 	            return(COMMENT);
+"//".* 	            ;
+{set}               return(SET);
 while               return(WHILE);
 for                 return(FOR);
 return              return(RETURN);
@@ -29,6 +30,9 @@ input		            return(INPUT);
 \^                  return(POWERSET_OP);
 setContains         return(SET_CONTAINS);
 setDelete	          return(SET_DELETE);
+{number}            return(NUMBER);
+{alphanumeric}      return(IDENTIFIER);
+{string}            return(STRING);
 \(                  return(LP);
 \)                  return(RP);
 \{                  return(LB);
@@ -49,12 +53,8 @@ setDelete	          return(SET_DELETE);
 \>\=                return(GEQ);
 \=\=                return(EE);
 \!\=                return(NE);
-\-\>                return(ARROW);
-{alphanumeric}      return(IDENTIFIER);
-{number}            return(NUMBER);
-{string}            return(STRING);
-{set}               return(SET); 
+\-\>                return(ARROW); 
+
 [ \t\n]             ;
 %%
 int yywrap() { return 1; }
-
