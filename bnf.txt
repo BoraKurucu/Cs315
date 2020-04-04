@@ -4,12 +4,15 @@
 <declaration> →  <var_decl> | <func_decl> | <stmt>
 
 <var_decl> → IDENTIFIER SC 
-<func_decl>  → FUNCTION IDENTIFIER LP <argument_list> RP <block> 
+<func_decl>  → FUNCTION IDENTIFIER LP <argument_list> RP <block> | FUNCTION IDENTIFIER LP RP <block>
 
 <argument_list> → IDENTIFIER | <argument_list> COMMA IDENTIFIER
 
-<stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> | <print_stmt>
+<stmt> → <expr_stmt>  | <loop_stmt> | <if_stmt> | <return_stmt> | <block> | <set_pull> | <set_push> | <print_stmt>| <delete_stmt> | 
 
+
+
+<delete_stmt> → IDENTIFIER ARROW SET_DELETE LP RP SC
 
 
 <return_stmt> →  RETURN <expr_stmt> 
@@ -46,27 +49,46 @@
 <block> → LB <stmt> RB
 
 
+
 <logic_expr> → <comparison_expr> | <logic_expr> <logic_op> <comparison_expr> 
 <comparison_expr> → <number_expr> <general_comp_op> <number_addt>  |  <set_expr>  <general_comp_op> <set_arith>  | <empty> | <bool>
+| <contain_expr>
+
+
+<contain_expr> →  IDENTIFIER ARROW SET_CONTAINS LP <general_basic_list_end>  RP 
+
+<general_basic_list_end> → <general_basic_list> <primary_list_end> | <general_basic_list> <set_list_end>
+<general_basic_list> → <general_basic> <general_basic_list> | <general_basic>
+<general_basic> → <primary_list_end> COMMA | <set_list_end> COMMA | <empty> 
+
+<primary_list_end> → <primary_list>  <primary>
+<primary_list> →  <primary_list_basic> <primary_list>  | <primary_list_basic> 
+<primary_list_basic> → <primary> COMMA | <empty>
+
+<set_list_end> → <set_list> SET
+<set_list> →  <set_list_basic> <set_list>  | <set_list_basic> 
+<set_list_basic> → SET COMMA | <empty>
+
 
 <assn_stmt>  → <string_assn> SC | <set_assn>  SC | <number_assn> SC 
 
 
 
-<expr> → <number_expr> | <set_expr> 
+
 <expr_stmt> → <number_expr> SC | <set_expr> SC
+<expr> → <number_expr> | <set_expr> 
 
-<string_assn> →  IDENTIFIER ASSN_OP STRING 
+<string_assn> →  IDENTIFIER ASSN_OP STRING | IDENTIFIER ASSN_OP INPUT LP RP| IDENTIFIER ASSN_OP INPUT LP STRING RP
 
 
-<bool _assn> → IDENTIFIER ASSN_OP <bool> 
+<bool _assn> → IDENTIFIER ASSN_OP <bool> | IDENTIFIER ASSN_OP <contain_stmt> 
 
 <number_assn> → IDENTIFIER ASSN_OP <number_expr> 
 <number_expr> →  <number_expr>  <general_comp_op> <number_addt> | <number_addt>
 <number_addt> →  <number_addt>  <number_addition_op> <number_mult> | <number_mult> 
 <number_mult>  →   <number_mult> <number_multiplication_op>  <number_call> | <number_call>
-<number_call> → IDENTIFIER LP <argument_list> RP | <number_factor>
-<number_factor>  →  NUMBER | <IDENTIFIER > | LP <number_expr> RP | <set_size>
+<number_call> → IDENTIFIER LP <argument_list> RP |IDENTIFIER LP RP |  <number_factor>
+<number_factor>  →  NUMBER | IDENTIFIER  | LP <number_expr> RP | <set_size> | INPUT LP RP | INPUT LP STRING RP
 
 
 
@@ -75,8 +97,8 @@
 <set_expr> →  <set_expr>  <general_comp_op> <set_arith> | <set_arith>
 <set_arith> →  <set_arith>  <set_arith_op> <set_unary> | <set_unary> 
 <set_unary>  →   <set_unary_op> <set_basic> | <set_call>
-<set_call> -> IDENTIFIER LP <argument_list> RP | <set_basic>
-<set_basic>   →  SET | <IDENTIFIER > | LP <set_expr> RP
+<set_call> -> IDENTIFIER LP <argument_list> RP |IDENTIFIER LP RP | <set_basic>
+<set_basic>   →  SET | IDENTIFIER  | LP <set_expr> RP 
 
 
 
@@ -86,7 +108,7 @@
 
 <general_comp_op > → LT | LEQ | GT | GEQ | EE | NE
 
-<set_arith_op> → UNION_OP | INTERSECTION_OP |  DIFF_OP  
+<set_arith_op> → UNION_OP | INTERSECTION_OP |  DIFF_OP  | CARTESIAN_OP
 <set_unary_op> POWERSET_OP
 
 <logic_op> → OR | AND
@@ -95,3 +117,4 @@
 
 <primary> → NUMBER | STRING | SET | IDENTIFIER
 <empty> →
+
