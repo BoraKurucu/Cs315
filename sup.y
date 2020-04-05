@@ -48,10 +48,8 @@ iterative_for :    FOR LP IDENTIFIER COLON SET RP expr_stmt |
 print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC 
 
 
-logic_expr_list : logic_list 
+logic_expr_list :  expr | logic_list general_comp_op  expr | LP expr RP
 
-
-logic_list : expr | logic_list general_comp_op  expr | LP logic_list RP
 
 
 contain_expr :  SET_IDE ARROW SET_CONTAINS LP argument_list RP | SET_IDE ARROW SET_CONTAINS LP argument_list RP 
@@ -78,12 +76,11 @@ number_call : IDENTIFIER LP argument_list RP | IDENTIFIER LP RP |  number_factor
 number_factor  :  NUMBER | IDENTIFIER | LP number_expr RP | set_size | INPUT LP RP | INPUT LP STRING RP 
 
 
-
 set_assn : IDENTIFIER ASSN_OP set_expr |  SET_IDE ASSN_OP set_expr
 set_expr :  set_expr  general_comp_op set_arith | set_arith
 set_arith :  set_arith  set_arith_op set_unary | set_unary 
 set_unary  :   set_unary_op set_basic | set_call
-set_call : IDENTIFIER LP argument_list RP |SET_IDE LP RP | set_basic ARROW LP argument_list RP | contain_expr | set_basic
+set_call : SET_IDE LP argument_list RP |SET_IDE LP RP | set_basic ARROW LP argument_list RP | contain_expr | set_basic
 set_basic  :  SET | SET_IDE  | LP set_expr RP 
 
 
