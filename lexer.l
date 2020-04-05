@@ -1,4 +1,4 @@
-%option main
+%option yylineno
 letter        [a-zA-Z]
 digit         [0-9]
 signs         [+-]
@@ -8,7 +8,10 @@ string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 %%
-"//".* 	            return(COMMENT);
+\&\&                return(AND);
+\|\|                return(OR);
+"//".* 	            ;
+{set}               return(SET);
 while               return(WHILE);
 for                 return(FOR);
 return              return(RETURN);
@@ -16,16 +19,11 @@ print               return(PRINT);
 if                  return(IF);
 else                return(ELSE);
 function            return(FUNCTION);                  
-true|false          return(BOOL);
-{alphanumeric}      return(IDENTIFIER);
-{number}            return(NUMBER);
-{string}            return(STRING);
-{set}               return(SET);
 input		            return(INPUT);
 \=                  return(ASSN_OP);
 \:\-		            return(DIFF_OP);
 \:\+		            return(UNION_OP);
-\:\x                return(CARTESIAN_OP);
+\:x                return(CARTESIAN_OP);
 \:\&                return(INTERSECTION_OP);
 \>\>		            return(PULL_OP);
 \<\<                return(PUSH_OP);
@@ -33,6 +31,10 @@ input		            return(INPUT);
 \^                  return(POWERSET_OP);
 setContains         return(SET_CONTAINS);
 setDelete	          return(SET_DELETE);
+{number}            return(NUMBER);
+${alphanumeric} 	return(SET_IDE);
+{alphanumeric}      return(IDENTIFIER);
+{string}            return(STRING);
 \(                  return(LP);
 \)                  return(RP);
 \{                  return(LB);
@@ -45,8 +47,6 @@ setDelete	          return(SET_DELETE);
 \/                  return(DIVIDE_OP);
 \%                  return(MOD_OP);
 \-                  return(MINUS_OP);
-\&\&                return(AND);
-\|\|                return(OR);
 \<                  return(LT);
 \<\=                return(LEQ);
 \>                  return(GT);
@@ -54,7 +54,7 @@ setDelete	          return(SET_DELETE);
 \=\=                return(EE);
 \!\=                return(NE);
 \-\>                return(ARROW); 
+
 [ \t\n]             ;
 %%
 int yywrap() { return 1; }
-
