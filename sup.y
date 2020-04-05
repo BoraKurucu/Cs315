@@ -9,7 +9,7 @@ declaration : var_decl | func_decl | stmt
 var_decl : IDENTIFIER SC 
 func_decl  : FUNCTION IDENTIFIER LP argument_list RP block | FUNCTION IDENTIFIER LP RP block
 
-argument_list : IDENTIFIER | argument_list COMMA IDENTIFIER
+argument_list : primary | argument_list COMMA primary
 
 
 
@@ -52,22 +52,17 @@ print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC
 
 logic_expr_list : logic_expr | LP logic_expr_list RP
 
-logic_expr : comparison_expr_list  | logic_expr logic_op comparison_expr_list
+logic_expr : comparison_expr_list  | logic_expr logic_op comparison_expr_list | IDENTIFIER
 
 comparison_expr_list : comparison_expr | LP comparison_expr RP 
 
-comparison_expr : number_addt general_comp_op number_addt  |  set_arith  general_comp_op set_arith   
+comparison_expr : number_addt general_comp_op number_addt  |  set_arith  general_comp_op set_arith  | 
 
 
 
 
-contain_expr :  IDENTIFIER ARROW SET_CONTAINS LP set_element_end RP | IDENTIFIER ARROW SET_CONTAINS LP set_element_list RP 
+contain_expr :  IDENTIFIER ARROW SET_CONTAINS LP argument_list RP | IDENTIFIER ARROW SET_CONTAINS LP argument_list RP 
 
-set_element_end :  set_element_list  | set_element_list_parant  LP set_element_list RP
-set_element_list_parant : LB set_element_list RB | set_element_list_parant COMMA LB set_element_list RB
-
-set_element_list : primary | set_element primary
-set_element : primary  | set_element COMMA  primary
 
 assn_stmt  : string_assn SC | set_assn  SC | number_assn SC 
 
