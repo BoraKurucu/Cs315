@@ -1,4 +1,5 @@
 //this is a comment
+
 set1;
 set2;
 int1;
@@ -35,7 +36,6 @@ set2 = {1,2,3};
 
 
 //advanced assignments
-
 set1 = set1 :+ set2;
 set1 = set1 :- set2;
 set1 = set1 :- set2;
@@ -59,11 +59,9 @@ set3 = ^set1;
 size = #set1;
 set3 = ((set1 :+ set2) :+ ({1,2,3} :- ( set1 :- set2)) :+ (set1 :& set2));
 
-
 // statements
-x =  true;
 a = 3;
-if (a != 5) {
+if (a < 5) {
   a = 5;
 }
 
@@ -73,7 +71,7 @@ if (a > 5 && a < 10 || a < 7 ) {
 }
 
 if (a < 5) {
-  if(a != 10)
+  if(a < 10)
   a = 5;
   else
   a = 7;
@@ -87,13 +85,13 @@ else
 if (a >= 5) {
   a = 5;
 }
-else if( x == true)
+else if( x <  5)
 {
+a = 5;
 }
-else if( ( a <= 10 && x == false)  || x == true )
+else if( ( a <= 110) && (x != 7))
 {
 	a = 7;
-	x = true;
 }
 else if (a == 9)
 a = 10;
@@ -103,7 +101,9 @@ else
 a = 10;
 
 while(a < 10)
+{
   a = a + 2;
+}
 
   
  while(a < 10)
@@ -115,7 +115,9 @@ while(a < 10)
  }
   
 for (i : set1)
+{
   print(i);
+}
   
 for (i : set1)
 {
@@ -151,9 +153,4 @@ set3->setDelete();
 x = set1->setContains(int1);
 x = set1->setContains(5);
 x = set1->setContains("Hello");
-x = set1-> setContains ( 1,2,3,4,5,"hello");
-
-if(x == true)
-{
-print("hello");
-}
+x = set1->setContains( 1,2,3,4,5,"hello");
