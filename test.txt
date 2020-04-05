@@ -1,5 +1,10 @@
 //this is a comment
 
+
+if (z && y) {
+	a = x;
+}
+
 set1;
 set2;
 int1;
@@ -93,7 +98,7 @@ else if( ( a <= 110) && (x != 7))
 {
 	a = 7;
 }
-else if (a == 9)
+else if (x && y) 
 a = 10;
 else if ( a != 8)
 a = 7;
@@ -144,6 +149,8 @@ string1 = input("example.txt");
 set3;
 set3 = {1,2,3};
 
+
+//cartesian product
 set1 = set2 :x set3;
 set1 = set2 :x set3 :+ set2;
 
@@ -160,3 +167,7 @@ x = set1->setContains( {1,2,3,4,5,"hello"});
 
 if(x)
 print("Hello");
+
+if (x && y || z) {
+	a = x;
+}

@@ -8,6 +8,8 @@ string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 %%
+\&\&                {printf("AND ") ; return(AND);}
+\|\|                {printf("OR"); return(OR);}
 "//".* 	            ;
 {set}               return(SET);
 while               return(WHILE);
@@ -44,8 +46,6 @@ setDelete	          return(SET_DELETE);
 \/                  return(DIVIDE_OP);
 \%                  return(MOD_OP);
 \-                  return(MINUS_OP);
-\&\&                return(AND);
-\|\|                return(OR);
 \<                  return(LT);
 \<\=                return(LEQ);
 \>                  return(GT);

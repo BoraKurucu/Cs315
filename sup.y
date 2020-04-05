@@ -49,16 +49,10 @@ iterative_for :  FOR LP IDENTIFIER COLON IDENTIFIER RP expr_stmt |  FOR LP IDENT
 print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC 
 
 
-
-logic_expr_list : logic_expr | LP logic_expr_list RP
-
-logic_expr : comparison_expr_list  | logic_expr logic_op comparison_expr_list | IDENTIFIER
-
-comparison_expr_list : comparison_expr | LP comparison_expr RP 
-
-comparison_expr : number_addt general_comp_op number_addt  |  set_arith  general_comp_op set_arith  | 
+logic_expr_list : logic_list 
 
 
+logic_list : expr | logic_list logic_op expr
 
 
 contain_expr :  IDENTIFIER ARROW SET_CONTAINS LP argument_list RP | IDENTIFIER ARROW SET_CONTAINS LP argument_list RP 
@@ -68,7 +62,7 @@ assn_stmt  : string_assn SC | set_assn  SC | number_assn SC
 
 
 
-expr_stmt : number_expr SC | set_expr SC
+expr_stmt :expr SC
 expr : number_expr | set_expr 
 
 string_assn : IDENTIFIER ASSN_OP STRING | IDENTIFIER ASSN_OP INPUT LP RP| IDENTIFIER ASSN_OP INPUT LP STRING RP
