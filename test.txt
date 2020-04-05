@@ -1,9 +1,12 @@
 //this is a comment
 
+b = 50;
+c = 100;
+x = 10;
+y = 20;
+a = 3;
 
-if (z && y) {
-	a = x;
-}
+
 
 set1;
 set2;
@@ -59,13 +62,13 @@ int1 = 5 + 3.4;
 int1 = 5.3 * 3;
 int1 = 5.4 / 3;
 int1 = ((5 + 8.5) * (5 / 3.8) + int2);
+int1 = (5) * (3) + ( 2 - 7 / (3 < 5.7));
 
 set3 = ^set1;
 size = #set1;
 set3 = ((set1 :+ set2) :+ ({1,2,3} :- ( set1 :- set2)) :+ (set1 :& set2));
 
-// statements
-a = 3;
+
 if (a < 5) {
   a = 5;
 }
@@ -87,18 +90,18 @@ else
 }
 
 
-if (a >= 5) {
+if ((b == 100 && c<= 20 ) || 7 ) {
   a = 5;
 }
-else if( x <  5)
+else if(x && y || a <=10 )
 {
 a = 5;
 }
-else if( ( a <= 110) && (x != 7))
+else if( ((x) && ( x && y && 7)))
 {
 	a = 7;
 }
-else if (x && y) 
+else if (x && y || a <=10 || (b == 100 && c<= 20 ) || 7 || ((x) && ( x && y && 7)))
 a = 10;
 else if ( a != 8)
 a = 7;
@@ -134,7 +137,7 @@ for (i : set1)
 x = ( set2 <= set1);
 // y = if set1 is superset of set2;
 y = set1 > set2;
-if( set1 >= set2 || set1 == set2 || x == true)
+if( set1 >= set2 || set1 == set2)
 {
 a = 4.7;
 a = a + 3;

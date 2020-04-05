@@ -52,7 +52,7 @@ print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC
 logic_expr_list : logic_list 
 
 
-logic_list : expr | logic_list logic_op expr
+logic_list : expr | logic_list general_comp_op  expr | LP logic_list RP
 
 
 contain_expr :  IDENTIFIER ARROW SET_CONTAINS LP argument_list RP | IDENTIFIER ARROW SET_CONTAINS LP argument_list RP 
@@ -66,7 +66,6 @@ expr_stmt :expr SC
 expr : number_expr | set_expr 
 
 string_assn : IDENTIFIER ASSN_OP STRING | IDENTIFIER ASSN_OP INPUT LP RP| IDENTIFIER ASSN_OP INPUT LP STRING RP
-
 
 
 
@@ -95,12 +94,11 @@ set_pull  : IDENTIFIER PULL_OP primary SC
 set_push : IDENTIFIER PUSH_OP primary SC
 set_size  : CARDINALITY_OP IDENTIFIER  | CARDINALITY_OP SET 
 
-general_comp_op  : LT | LEQ | GT | GEQ | EE | NE
+general_comp_op  : LT | LEQ | GT | GEQ | EE | NE | OR | AND 
 
 set_arith_op : UNION_OP | INTERSECTION_OP |  DIFF_OP  | CARTESIAN_OP
 set_unary_op : POWERSET_OP
-
-logic_op : OR | AND  
+ 
 basic_addition_op : PLUS_OP|MINUS_OP
 basic_multiplication_op : MULTIPLY_OP|DIVIDE_OP|MOD_OP
 

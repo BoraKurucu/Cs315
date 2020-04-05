@@ -8,8 +8,8 @@ string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 %%
-\&\&                {printf("AND ") ; return(AND);}
-\|\|                {printf("OR"); return(OR);}
+\&\&                return(AND);
+\|\|                return(OR);
 "//".* 	            ;
 {set}               return(SET);
 while               return(WHILE);
