@@ -33,6 +33,7 @@ setContains         return(SET_CONTAINS);
 setDelete	          return(SET_DELETE);
 {number}            return(NUMBER);
 ${alphanumeric} 	return(SET_IDE);
+~{alphanumeric}		return(STR_IDE);
 {alphanumeric}      return(IDENTIFIER);
 {string}            return(STRING);
 \(                  return(LP);

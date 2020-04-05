@@ -38,8 +38,8 @@ $set1 = {"element"};
 $set1 = {"element1",2,3};
 int1 = 5;
 int2 = 24.7;
-string1 = "This is a string";
-string2 = "This is another string";
+~string1 = "This is a string";
+~string2 = "This is another string";
 $set2 = {1,2,3};
 
 
