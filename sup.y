@@ -4,9 +4,8 @@
 program:   list {printf("Input program is valid\n"); return 0;} | empty {printf("Input program is valid\n"); return 0;} 
 
 list  :  declaration  |  list declaration   
-declaration : var_decl | func_decl | stmt 
+declaration :  func_decl | stmt 
 
-var_decl : IDENTIFIER SC 
 func_decl  : FUNCTION IDENTIFIER LP argument_list RP block | FUNCTION IDENTIFIER LP RP block
 
 argument_list : primary | argument_list COMMA primary
@@ -77,7 +76,6 @@ number_addt :  number_addt basic_addition_op number_mult | number_mult
 number_mult  :   number_mult basic_multiplication_op number_call | number_call
 number_call : IDENTIFIER LP argument_list RP | IDENTIFIER LP RP |  number_factor
 number_factor  :  NUMBER | IDENTIFIER | LP number_expr RP | set_size | INPUT LP RP | INPUT LP STRING RP
-
 
 
 

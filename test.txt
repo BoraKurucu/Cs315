@@ -44,10 +44,19 @@ set2 = {1,2,3};
 
 
 //advanced assignments
+
+//union
 set1 = set1 :+ set2;
+//diff
 set1 = set1 :- set2;
-set1 = set1 :- set2;
+//cartesian
+set1 = set1 :x set2;
+//intersection
 set1 = set1 :& set2;
+//powerset
+set3 = ^set1;
+//size
+size = #set1;
 
 
 set1 << 5;
@@ -64,8 +73,7 @@ int1 = 5.4 / 3;
 int1 = ((5 + 8.5) * (5 / 3.8) + int2);
 int1 = (5) * (3) + ( 2 - 7 / (3 < 5.7));
 
-set3 = ^set1;
-size = #set1;
+
 set3 = ((set1 :+ set2) :+ ({1,2,3} :- ( set1 :- set2)) :+ (set1 :& set2));
 
 
@@ -155,6 +163,7 @@ set3 = {1,2,3};
 
 //cartesian product
 set1 = set2 :x set3;
+//cartesian product than union
 set1 = set2 :x set3 :+ set2;
 
 set2->setDelete();
