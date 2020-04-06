@@ -55,20 +55,14 @@
 | <contain_expr>
 
 
-<contain_expr> →  IDENTIFIER ARROW SET_CONTAINS LP <general_basic_list_end>  RP 
+<contain_expr> →  IDENTIFIER ARROW SET_CONTAINS LP <set_element_end> RP | IDENTIFIER ARROW SET_CONTAINS LP <set_element_list> RP 
 
-<general_basic_list_end> → <general_basic_list> <primary_list_end> | <general_basic_list> <set_list_end>
-<general_basic_list> → <general_basic> <general_basic_list> | <general_basic>
-<general_basic> → <primary_list_end> COMMA | <set_list_end> COMMA | <empty> 
+<set_element_end> →  <set_element_list>  | <set_element_list_parant>  LP <set_element_list> RP
+<set_element_list_parant> → LB <set_element_list> RB | <set_element_list_parant> COMMA LB <set_element_list> RB
 
-<primary_list_end> → <primary_list>  <primary>
-<primary_list> →  <primary_list_basic> <primary_list>  | <primary_list_basic> 
-<primary_list_basic> → <primary> COMMA | <empty>
 
-<set_list_end> → <set_list> SET
-<set_list> →  <set_list_basic> <set_list>  | <set_list_basic> 
-<set_list_basic> → SET COMMA | <empty>
-
+<set_element_list> → <primary> | <set_element> <primary>
+<set_element> → <primary>  | <set_element> COMMA  <primary>
 
 <assn_stmt>  → <string_assn> SC | <set_assn>  SC | <number_assn> SC 
 
@@ -117,4 +111,3 @@
 
 <primary> → NUMBER | STRING | SET | IDENTIFIER
 <empty> →
-
