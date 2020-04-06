@@ -52,7 +52,7 @@ logic_expr_list :  expr | logic_list general_comp_op  expr | LP expr RP
 
 
 
-contain_expr :  SET_IDE ARROW SET_CONTAINS LP argument_list RP | SET_IDE ARROW SET_CONTAINS LP argument_list RP 
+contain_expr :  SET_IDE ARROW SET_CONTAINS LP argument_list RP 
 
 
 assn_stmt  : string_assn SC | set_assn  SC | number_assn SC 
@@ -79,8 +79,8 @@ number_factor  :  NUMBER | IDENTIFIER | LP number_expr RP | set_size | INPUT LP 
 set_assn : IDENTIFIER ASSN_OP set_expr |  SET_IDE ASSN_OP set_expr
 set_expr :  set_expr  general_comp_op set_arith | set_arith
 set_arith :  set_arith  set_arith_op set_unary | set_unary 
-set_unary  :   set_unary_op set_basic | set_call
-set_call : SET_IDE LP argument_list RP |SET_IDE LP RP | set_basic ARROW LP argument_list RP | contain_expr | set_basic
+set_unary  :   set_unary_op set_call | set_call
+set_call : SET_IDE LP argument_list RP |SET_IDE LP RP | SET_IDE ARROW LP argument_list RP | contain_expr | set_basic
 set_basic  :  SET | SET_IDE  | LP set_expr RP 
 
 
