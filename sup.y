@@ -1,10 +1,10 @@
 %token  WHILE SET_IDE STR_IDE FOR RETURN PRINT IF ELSE FUNCTION  IDENTIFIER NUMBER STRING SET INPUT ASSN_OP DIFF_OP UNION_OP CARTESIAN_OP INTERSECTION_OP PULL_OP PUSH_OP CARDINALITY_OP POWERSET_OP SET_CONTAINS SET_DELETE LP RP LB RB COMMA COLON SC PLUS_OP MULTIPLY_OP DIVIDE_OP MOD_OP MINUS_OP AND OR LT LEQ GT GEQ EE NE ARROW
 %%
 
-program:   list {printf("Input program is valid\n"); return 0;} |  {printf("Input program is valid\n"); return 0;} 
+program:   list  {printf("Input program is valid\n"); return 0;}
 
-list  :  declaration  |  list declaration   
-declaration :  func_decl | stmt | non_if_stmt
+list  :  list_basic  |  list list_basic   
+list_basic :  func_decl | stmt 
 
 func_decl  : FUNCTION IDENTIFIER LP argument_list RP block | FUNCTION IDENTIFIER LP RP block
 
@@ -12,7 +12,7 @@ argument_list : primary | argument_list COMMA primary
 
 
 
-stmt : matched | unmatched 
+ 
 
 block : LB list RB
 
@@ -20,13 +20,10 @@ delete_stmt : SET_IDE ARROW SET_DELETE LP RP SC
 
 
 return_stmt :  RETURN expr_stmt 
-non_if_stmt :  expr_stmt  | loop_stmt | return_stmt | block | set_pull | set_push | print_stmt| delete_stmt | assn_stmt 
+stmt :  expr_stmt  | loop_stmt | return_stmt | block | set_pull | set_push | print_stmt| delete_stmt | assn_stmt |  if_stmt
 
 
-matched : IF LP logic_expr_list RP matched ELSE matched | non_if_stmt
-
-unmatched : IF  LP logic_expr_list RP stmt
- |IF  LP logic_expr_list RP  matched ELSE unmatched
+if_stmt: IF LP logic_expr_list RP LB list RB | IF LP logic_expr_list RP LB list RB ELSE LB list RB
 
 
 
@@ -48,7 +45,8 @@ iterative_for :    FOR LP IDENTIFIER COLON SET RP expr_stmt |
 print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC 
 
 
-logic_expr_list :  expr | logic_list general_comp_op  expr | LP expr RP
+logic_expr_list :  logic_expr_list general_comp_op logic_expr_list_basic | logic_expr_list general_comp_op LP logic_expr_list_basic RP | logic_expr_list_basic | LP logic_expr_list RP 
+logic_expr_list_basic: primary general_comp_op primary 
 
 
 
@@ -98,7 +96,7 @@ set_unary_op : POWERSET_OP
 basic_addition_op : PLUS_OP|MINUS_OP
 basic_multiplication_op : MULTIPLY_OP|DIVIDE_OP|MOD_OP
 
-primary : NUMBER | STRING | SET | IDENTIFIER
+primary : NUMBER | STRING | SET | IDENTIFIER | SET_IDE |  STR_IDE 
 
 
 

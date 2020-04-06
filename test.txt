@@ -1,5 +1,4 @@
 
-
 //this is a comment
 
 
@@ -78,6 +77,10 @@ int1 = (5) * (3) + ( 2 - 7 / (3 < 5.7));
 
 $set3 = (($set1 :+ $set2) :+ ({1,2,3} :- ( $set1 :- $set2)) :+ ($set1 :& $set2));
 
+if( a == 7)
+{
+a = 8;
+}
 
 if (a < 5) {
   a = 5;
@@ -90,9 +93,13 @@ if (a > 5 && a < 10 || a < 7 ) {
 
 if (a < 5) {
   if(a < 10)
+  {
   a = 5;
+  }
   else
+  {
   a = 7;
+  }
 }
 else
 {
@@ -100,36 +107,25 @@ else
 }
 
 
-if ((b == 100 && c<= 20 ) || 7 ) {
+if (b == 100 && c<= 20  ) {
   a = 5;
 }
-else if(x && y || a <=10 )
-{
-a = 5;
-}
-else if( ((x) && ( x && y && 7)))
-{
-	a = 7;
-}
-else if (x && y || a <=10 || (b == 100 && c<= 20 ) || 7 || ((x) && ( x && y && 7)))
-a = 10;
-else if ( a != 8)
-a = 7;
 else
-a = 10;
-
-while(a < 10)
 {
-  a = a + 2;
+    a = 8;
 }
 
   
  while(a < 10)
  {
-  if(a % 2 == 0)
+  if(a  == 0)
+  {
   a = a + 2;
+  }
   else
+  {
   a = 5;
+  }
  }
   
 for (i : $set1)
@@ -179,9 +175,9 @@ x = $set1->setContains( {1,2},3,4,5,"hello");
 x = $set1->setContains( {1,2},3,4,{5,"hello"});
 x = $set1->setContains( {1,2,3,4,5,"hello"});
 
-if(x)
+if( x > 10 && y < 5 || y > 20)
+{
 print("Hello");
-
-if (x && y || z) {
-	a = x;
 }
+
+
