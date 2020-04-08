@@ -40,8 +40,8 @@ while_stmt : WHILE LP   expr   RP stmt
 for_stmt : FOR LP assn_stmt  expr_stmt  expr RP stmt | FOR LP assn_stmt  SC  expr RP stmt | FOR LP assn_stmt  expr_stmt  assn RP stmt | iterative_for
 
 
-iterative_for :    FOR LP IDENTIFIER COLON SET RP expr_stmt |
-	FOR LP IDENTIFIER COLON SET_IDE RP block |  FOR LP IDENTIFIER COLON SET RP block
+iterative_for :    FOR LP IDENTIFIER COLON set RP expr_stmt |
+	FOR LP IDENTIFIER COLON SET_IDE RP block |  FOR LP IDENTIFIER COLON set RP block
 
 
 print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC 
@@ -78,14 +78,14 @@ set_expr :  set_expr  general_comp_op set_arith | set_arith
 set_arith :  set_arith  set_arith_op set_unary | set_unary 
 set_unary  :   set_unary_op set_basic | set_call
 set_call : FUNC SET_IDE LP argument_list RP | FUNC SET_IDE LP RP | set_basic
-set_basic  :  SET | SET_IDE | LP set_expr RP | contain_expr
+set_basic  :  set | SET_IDE | LP set_expr RP | contain_expr
 
 
-SET: SET_INIT | LB argument_list RB
+set: SET_INIT | LB argument_list RB
 
 set_pull  : SET_IDE PULL_OP primary SC
 set_push : SET_IDE PUSH_OP primary SC
-set_size  : CARDINALITY_OP SET_IDE  | CARDINALITY_OP SET 
+set_size  : CARDINALITY_OP SET_IDE  | CARDINALITY_OP set 
 
 general_comp_op  : LT | LEQ | GT | GEQ | EE | NE | OR | AND 
 
@@ -95,7 +95,7 @@ set_unary_op : POWERSET_OP
 basic_addition_op : PLUS_OP|MINUS_OP
 basic_multiplication_op : MULTIPLY_OP|DIVIDE_OP|MOD_OP
 
-primary : NUMBER | STRING | IDENTIFIER | SET_IDE |  STR_IDE | SET
+primary : NUMBER | STRING | IDENTIFIER | SET_IDE |  STR_IDE | set
 
 %%
 #include "lex.yy.c"

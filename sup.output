@@ -46,9 +46,9 @@ Grammar
    30         | FOR LP assn_stmt expr_stmt assn RP stmt
    31         | iterative_for
 
-   32 iterative_for: FOR LP IDENTIFIER COLON SET RP expr_stmt
+   32 iterative_for: FOR LP IDENTIFIER COLON set RP expr_stmt
    33              | FOR LP IDENTIFIER COLON SET_IDE RP block
-   34              | FOR LP IDENTIFIER COLON SET RP block
+   34              | FOR LP IDENTIFIER COLON set RP block
 
    35 print_stmt: PRINT LP expr RP SC
    36           | PRINT LP STRING RP SC
@@ -111,12 +111,12 @@ Grammar
    76         | FUNC SET_IDE LP RP
    77         | set_basic
 
-   78 set_basic: SET
+   78 set_basic: set
    79          | SET_IDE
    80          | LP set_expr RP
    81          | contain_expr
 
-   82 SET: SET_INIT
+   82 set: SET_INIT
    83    | LB argument_list RB
 
    84 set_pull: SET_IDE PULL_OP primary SC
@@ -124,7 +124,7 @@ Grammar
    85 set_push: SET_IDE PUSH_OP primary SC
 
    86 set_size: CARDINALITY_OP SET_IDE
-   87         | CARDINALITY_OP SET
+   87         | CARDINALITY_OP set
 
    88 general_comp_op: LT
    89                | LEQ
@@ -154,7 +154,7 @@ Grammar
   108        | IDENTIFIER
   109        | SET_IDE
   110        | STR_IDE
-  111        | SET
+  111        | set
 
 
 Terminals, with rules where they appear
@@ -284,7 +284,7 @@ set_call (83)
     on left: 75 76 77, on right: 74
 set_basic (84)
     on left: 78 79 80 81, on right: 73 77
-SET (85)
+set (85)
     on left: 82 83, on right: 32 34 78 87 111
 set_pull (86)
     on left: 84, on right: 17
@@ -360,7 +360,7 @@ state 0
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -420,9 +420,9 @@ state 5
    28 for_stmt: FOR . LP assn_stmt expr_stmt expr RP stmt
    29         | FOR . LP assn_stmt SC expr RP stmt
    30         | FOR . LP assn_stmt expr_stmt assn RP stmt
-   32 iterative_for: FOR . LP IDENTIFIER COLON SET RP expr_stmt
+   32 iterative_for: FOR . LP IDENTIFIER COLON set RP expr_stmt
    33              | FOR . LP IDENTIFIER COLON SET_IDE RP block
-   34              | FOR . LP IDENTIFIER COLON SET RP block
+   34              | FOR . LP IDENTIFIER COLON set RP block
 
     LP  shift, and go to state 64
 
@@ -455,7 +455,7 @@ state 6
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -504,9 +504,9 @@ state 11
 
 state 12
 
-   82 SET: SET_INIT .
+   82 set: SET_INIT .
 
-    $default  reduce using rule 82 (SET)
+    $default  reduce using rule 82 (set)
 
 
 state 13
@@ -520,13 +520,13 @@ state 13
 state 14
 
    86 set_size: CARDINALITY_OP . SET_IDE
-   87         | CARDINALITY_OP . SET
+   87         | CARDINALITY_OP . set
 
     SET_IDE   shift, and go to state 75
     SET_INIT  shift, and go to state 12
     LB        shift, and go to state 68
 
-    SET  go to state 76
+    set  go to state 76
 
 
 state 15
@@ -563,7 +563,7 @@ state 16
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -571,7 +571,7 @@ state 16
 state 17
 
    10 block: LB . list RB
-   83 SET: LB . argument_list RB
+   83 set: LB . argument_list RB
 
     WHILE           shift, and go to state 1
     FUNC            shift, and go to state 2
@@ -624,7 +624,7 @@ state 17
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 86
+    set            go to state 86
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -694,7 +694,7 @@ state 19
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -958,7 +958,7 @@ state 49
 
 state 50
 
-   78 set_basic: SET .
+   78 set_basic: set .
 
     $default  reduce using rule 78 (set_basic)
 
@@ -995,7 +995,7 @@ state 54
 
     contain_expr  go to state 32
     set_basic     go to state 115
-    SET           go to state 50
+    set           go to state 50
 
 
 state 55
@@ -1025,7 +1025,7 @@ state 55
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -1071,7 +1071,7 @@ state 59
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_unary_op  go to state 54
 
 
@@ -1087,7 +1087,7 @@ state 60
     SET_INIT    shift, and go to state 12
     LB          shift, and go to state 68
 
-    SET      go to state 126
+    set      go to state 126
     primary  go to state 127
 
 
@@ -1103,7 +1103,7 @@ state 61
     SET_INIT    shift, and go to state 12
     LB          shift, and go to state 68
 
-    SET      go to state 126
+    set      go to state 126
     primary  go to state 128
 
 
@@ -1133,9 +1133,9 @@ state 64
    28 for_stmt: FOR LP . assn_stmt expr_stmt expr RP stmt
    29         | FOR LP . assn_stmt SC expr RP stmt
    30         | FOR LP . assn_stmt expr_stmt assn RP stmt
-   32 iterative_for: FOR LP . IDENTIFIER COLON SET RP expr_stmt
+   32 iterative_for: FOR LP . IDENTIFIER COLON set RP expr_stmt
    33              | FOR LP . IDENTIFIER COLON SET_IDE RP block
-   34              | FOR LP . IDENTIFIER COLON SET RP block
+   34              | FOR LP . IDENTIFIER COLON set RP block
 
     FUNC        shift, and go to state 134
     SET_IDE     shift, and go to state 135
@@ -1179,7 +1179,7 @@ state 67
 
 state 68
 
-   83 SET: LB . argument_list RB
+   83 set: LB . argument_list RB
 
     SET_IDE     shift, and go to state 122
     STR_IDE     shift, and go to state 123
@@ -1190,7 +1190,7 @@ state 68
     LB          shift, and go to state 68
 
     argument_list  go to state 85
-    SET            go to state 126
+    set            go to state 126
     primary        go to state 87
 
 
@@ -1230,7 +1230,7 @@ state 70
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -1263,7 +1263,7 @@ state 71
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -1303,7 +1303,7 @@ state 73
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -1326,7 +1326,7 @@ state 75
 
 state 76
 
-   87 set_size: CARDINALITY_OP SET .
+   87 set_size: CARDINALITY_OP set .
 
     $default  reduce using rule 87 (set_size)
 
@@ -1485,7 +1485,7 @@ state 84
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -1495,7 +1495,7 @@ state 84
 state 85
 
     9 argument_list: argument_list . COMMA primary
-   83 SET: LB argument_list . RB
+   83 set: LB argument_list . RB
 
     RB     shift, and go to state 150
     COMMA  shift, and go to state 151
@@ -1503,8 +1503,8 @@ state 85
 
 state 86
 
-   78 set_basic: SET .
-  111 primary: SET .
+   78 set_basic: set .
+  111 primary: set .
 
     RB        reduce using rule 111 (primary)
     COMMA     reduce using rule 111 (primary)
@@ -1704,7 +1704,7 @@ state 108
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_unary_op  go to state 54
 
 
@@ -1751,7 +1751,7 @@ state 113
     set_unary     go to state 158
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_unary_op  go to state 54
 
 
@@ -1772,7 +1772,7 @@ state 114
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_unary_op  go to state 54
 
 
@@ -1805,7 +1805,7 @@ state 117
     LB          shift, and go to state 68
 
     argument_list  go to state 161
-    SET            go to state 126
+    set            go to state 126
     primary        go to state 87
 
 
@@ -1824,7 +1824,7 @@ state 118
     LB          shift, and go to state 68
 
     argument_list  go to state 163
-    SET            go to state 126
+    set            go to state 126
     primary        go to state 87
 
 
@@ -1843,7 +1843,7 @@ state 119
     LB          shift, and go to state 68
 
     argument_list  go to state 165
-    SET            go to state 126
+    set            go to state 126
     primary        go to state 87
 
 
@@ -1904,7 +1904,7 @@ state 125
 
 state 126
 
-  111 primary: SET .
+  111 primary: set .
 
     $default  reduce using rule 111 (primary)
 
@@ -1976,9 +1976,9 @@ state 135
 
 state 136
 
-   32 iterative_for: FOR LP IDENTIFIER . COLON SET RP expr_stmt
+   32 iterative_for: FOR LP IDENTIFIER . COLON set RP expr_stmt
    33              | FOR LP IDENTIFIER . COLON SET_IDE RP block
-   34              | FOR LP IDENTIFIER . COLON SET RP block
+   34              | FOR LP IDENTIFIER . COLON set RP block
    51 number_assn: IDENTIFIER . ASSN_OP number_expr
    68 set_assn: IDENTIFIER . ASSN_OP set_expr
 
@@ -2017,7 +2017,7 @@ state 137
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -2066,7 +2066,7 @@ state 142
     LB          shift, and go to state 68
 
     argument_list  go to state 178
-    SET            go to state 126
+    set            go to state 126
     primary        go to state 87
 
 
@@ -2145,9 +2145,9 @@ state 149
 
 state 150
 
-   83 SET: LB argument_list RB .
+   83 set: LB argument_list RB .
 
-    $default  reduce using rule 83 (SET)
+    $default  reduce using rule 83 (set)
 
 
 state 151
@@ -2162,7 +2162,7 @@ state 151
     SET_INIT    shift, and go to state 12
     LB          shift, and go to state 68
 
-    SET      go to state 126
+    set      go to state 126
     primary  go to state 180
 
 
@@ -2298,7 +2298,7 @@ state 159
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -2380,7 +2380,7 @@ state 168
     LB          shift, and go to state 68
 
     argument_list  go to state 185
-    SET            go to state 126
+    set            go to state 126
     primary        go to state 87
 
 
@@ -2402,15 +2402,15 @@ state 170
 
 state 171
 
-   32 iterative_for: FOR LP IDENTIFIER COLON . SET RP expr_stmt
+   32 iterative_for: FOR LP IDENTIFIER COLON . set RP expr_stmt
    33              | FOR LP IDENTIFIER COLON . SET_IDE RP block
-   34              | FOR LP IDENTIFIER COLON . SET RP block
+   34              | FOR LP IDENTIFIER COLON . set RP block
 
     SET_IDE   shift, and go to state 189
     SET_INIT  shift, and go to state 12
     LB        shift, and go to state 68
 
-    SET  go to state 190
+    set  go to state 190
 
 
 state 172
@@ -2440,7 +2440,7 @@ state 172
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -2478,7 +2478,7 @@ state 173
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -2547,7 +2547,7 @@ state 176
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -2653,8 +2653,8 @@ state 189
 
 state 190
 
-   32 iterative_for: FOR LP IDENTIFIER COLON SET . RP expr_stmt
-   34              | FOR LP IDENTIFIER COLON SET . RP block
+   32 iterative_for: FOR LP IDENTIFIER COLON set . RP expr_stmt
+   34              | FOR LP IDENTIFIER COLON set . RP block
 
     RP  shift, and go to state 205
 
@@ -2769,7 +2769,7 @@ state 198
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -2824,8 +2824,8 @@ state 204
 
 state 205
 
-   32 iterative_for: FOR LP IDENTIFIER COLON SET RP . expr_stmt
-   34              | FOR LP IDENTIFIER COLON SET RP . block
+   32 iterative_for: FOR LP IDENTIFIER COLON set RP . expr_stmt
+   34              | FOR LP IDENTIFIER COLON set RP . block
 
     FUNC            shift, and go to state 65
     SET_IDE         shift, and go to state 66
@@ -2852,7 +2852,7 @@ state 205
     set_unary     go to state 47
     set_call      go to state 48
     set_basic     go to state 49
-    SET           go to state 50
+    set           go to state 50
     set_size      go to state 53
     set_unary_op  go to state 54
 
@@ -2906,7 +2906,7 @@ state 206
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -2962,7 +2962,7 @@ state 207
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -3018,7 +3018,7 @@ state 208
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -3074,7 +3074,7 @@ state 209
     set_unary      go to state 47
     set_call       go to state 48
     set_basic      go to state 49
-    SET            go to state 50
+    set            go to state 50
     set_pull       go to state 51
     set_push       go to state 52
     set_size       go to state 53
@@ -3097,14 +3097,14 @@ state 211
 
 state 212
 
-   34 iterative_for: FOR LP IDENTIFIER COLON SET RP block .
+   34 iterative_for: FOR LP IDENTIFIER COLON set RP block .
 
     $default  reduce using rule 34 (iterative_for)
 
 
 state 213
 
-   32 iterative_for: FOR LP IDENTIFIER COLON SET RP expr_stmt .
+   32 iterative_for: FOR LP IDENTIFIER COLON set RP expr_stmt .
 
     $default  reduce using rule 32 (iterative_for)
 
