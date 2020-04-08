@@ -8,6 +8,8 @@ string        \"[^\"]*\"
 element       ({number}|{string}|{alphanumeric})
 set           \{(({element}\,)*{element})?\}
 %%
+\&\&                return(AND);
+\|\|                return(OR);
 "//".* 	            ;
 {set}               return(SET);
 while               return(WHILE);
@@ -17,12 +19,11 @@ print               return(PRINT);
 if                  return(IF);
 else                return(ELSE);
 function            return(FUNCTION);                  
-true|false          return(BOOL);
 input		            return(INPUT);
 \=                  return(ASSN_OP);
 \:\-		            return(DIFF_OP);
 \:\+		            return(UNION_OP);
-\:\x                return(CARTESIAN_OP);
+\:x                return(CARTESIAN_OP);
 \:\&                return(INTERSECTION_OP);
 \>\>		            return(PULL_OP);
 \<\<                return(PUSH_OP);
@@ -31,6 +32,9 @@ input		            return(INPUT);
 setContains         return(SET_CONTAINS);
 setDelete	          return(SET_DELETE);
 {number}            return(NUMBER);
+\?			return(FUNC);
+${alphanumeric} 	return(SET_IDE);
+~{alphanumeric}		return(STR_IDE);
 {alphanumeric}      return(IDENTIFIER);
 {string}            return(STRING);
 \(                  return(LP);
@@ -45,8 +49,6 @@ setDelete	          return(SET_DELETE);
 \/                  return(DIVIDE_OP);
 \%                  return(MOD_OP);
 \-                  return(MINUS_OP);
-\&\&                return(AND);
-\|\|                return(OR);
 \<                  return(LT);
 \<\=                return(LEQ);
 \>                  return(GT);
