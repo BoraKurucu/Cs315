@@ -12,9 +12,8 @@ list_basic :  func_decl | stmt
 
 func_decl  : FUNCTION IDENTIFIER LP argument_list RP block | FUNCTION IDENTIFIER LP RP block
 
+argument_list : primary | argument_list COMMA argument_list | LB argument_list RB 
 
-
-argument_list : primary | argument_list COMMA argument_list | LB argument_list RB  | argument_list COMMA LB primary RB
 
 
  
