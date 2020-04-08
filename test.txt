@@ -1,4 +1,3 @@
-
 //this is a comment
 $aset = {1,2,3};
 b = 50;
@@ -26,8 +25,10 @@ function f2(a,b,c) {
   print(c);
   return a + b + c;
 }
-function foo($a,$b,c)
+print(~c);
+function foo($a,$b,~c)
 {
+print(~c);
 return $b;
 }
 //basic assignments

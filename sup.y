@@ -44,7 +44,7 @@ iterative_for :    FOR LP IDENTIFIER COLON set RP expr_stmt |
 	FOR LP IDENTIFIER COLON SET_IDE RP block |  FOR LP IDENTIFIER COLON set RP block
 
 
-print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC 
+print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC | PRINT LP STR_IDE RP SC
 
 
 
