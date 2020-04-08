@@ -187,3 +187,8 @@ print("Hello");
 }
 
 $set1 = ? $foo();
+
+for(i = 0; i < 10; i + 1)
+{
+print("For test");
+}

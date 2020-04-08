@@ -38,8 +38,7 @@ loop_stmt : for_stmt | while_stmt
 while_stmt : WHILE LP   expr   RP block |
 			   WHILE LP   expr   RP  expr_stmt
 
-for_stmt : FOR LP assn_stmt  expr  expr RP block |
-			 FOR LP assn_stmt  expr  expr RP  expr_stmt | iterative_for
+for_stmt : FOR LP assn_stmt  expr_stmt  expr RP stmt | FOR LP assn_stmt  SC  expr RP stmt | FOR LP assn_stmt  expr_stmt  assn RP stmt | iterative_for
 
 
 iterative_for :    FOR LP IDENTIFIER COLON SET RP expr_stmt |
@@ -53,8 +52,8 @@ print_stmt : PRINT LP expr RP SC | PRINT LP STRING RP SC
 contain_expr :  SET_IDE ARROW SET_CONTAINS LP argument_list RP 
 
 
-assn_stmt  : string_assn SC | set_assn  SC | number_assn SC 
-
+assn_stmt  : assn SC 
+assn : string_assn | set_assn | number_assn
 
 
 expr_stmt :expr SC
