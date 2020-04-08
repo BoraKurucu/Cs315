@@ -11,7 +11,7 @@ set           \{(({element}\,)*{element})?\}
 \&\&                return(AND);
 \|\|                return(OR);
 "//".* 	            ;
-{set}               return(SET);
+{set}               return(SET_INIT);
 while               return(WHILE);
 for                 return(FOR);
 return              return(RETURN);

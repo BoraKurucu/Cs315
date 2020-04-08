@@ -35,7 +35,9 @@ $set1 = {};
 $set2 = {1,2,3};
 $set1 = {1,2,3};
 $set1 = {"element"};
-$set1 = {"element1",{2,3}};
+$set1 = {"element",1,2,3};
+$set1 = {{{2,3},5} };
+$set1 = {"element1",{{2,3},5},3};
 $set1 = {{"element1"},{2,3}};
 $set1 = {{"element1"},{2,3},set2};
 $set1 = {{"element1"},{2,3},set2,3,"hello"};
@@ -46,10 +48,6 @@ int2 = 24.7;
 ~string2 = "This is another string";
 ~string1 = ~string2;
 $set2 = {1,2,3};
-
-
-
-
 
 //advanced assignments
 
@@ -88,11 +86,6 @@ if( a == 7)
 {
 a = 8;
 }
-
-if (a < 5) {
-  a = 5;
-}
-
 
 if (a > 5 && a < 10 || a < 7 ) {
   a = 5;
@@ -158,7 +151,7 @@ a = a + 3;
 
 // function calls
 a = ? f2(a, b, c);
-? f1();
+?f1();
 
 int1 = input();
 string1 = input("example.txt");

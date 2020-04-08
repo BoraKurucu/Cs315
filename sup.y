@@ -1,4 +1,4 @@
-%token  WHILE FUNC SET_IDE STR_IDE FOR RETURN PRINT IF ELSE FUNCTION  IDENTIFIER NUMBER STRING SET INPUT ASSN_OP DIFF_OP UNION_OP CARTESIAN_OP INTERSECTION_OP PULL_OP PUSH_OP CARDINALITY_OP POWERSET_OP SET_CONTAINS SET_DELETE LP RP LB RB COMMA COLON SC PLUS_OP MULTIPLY_OP DIVIDE_OP MOD_OP MINUS_OP AND OR LT LEQ GT GEQ EE NE ARROW
+%token  WHILE FUNC SET_IDE STR_IDE FOR RETURN PRINT IF ELSE FUNCTION  IDENTIFIER NUMBER STRING SET_INIT  INPUT ASSN_OP DIFF_OP UNION_OP CARTESIAN_OP INTERSECTION_OP PULL_OP PUSH_OP CARDINALITY_OP POWERSET_OP SET_CONTAINS SET_DELETE LP RP LB RB COMMA COLON SC PLUS_OP MULTIPLY_OP DIVIDE_OP MOD_OP MINUS_OP AND OR LT LEQ GT GEQ EE NE ARROW
 
 %nonassoc LESS_ELSE
 %nonassoc ELSE
@@ -12,8 +12,9 @@ list_basic :  func_decl | stmt
 
 func_decl  : FUNCTION IDENTIFIER LP argument_list RP block | FUNCTION IDENTIFIER LP RP block
 
-argument_list : primary | argument_list COMMA primary | LB argument_list RB
 
+
+argument_list : primary | argument_list COMMA argument_list | LB argument_list RB  | argument_list COMMA LB primary RB
 
 
  
@@ -80,10 +81,10 @@ set_expr :  set_expr  general_comp_op set_arith | set_arith
 set_arith :  set_arith  set_arith_op set_unary | set_unary 
 set_unary  :   set_unary_op set_basic | set_call
 set_call : FUNC SET_IDE LP argument_list RP | FUNC SET_IDE LP RP | set_basic
-set_basic  :  SET | SET_IDE | LP set_expr RP | contain_expr |  LB argument_list RB 
+set_basic  :  SET | SET_IDE | LP set_expr RP | contain_expr
 
 
-
+SET: SET_INIT | LB argument_list RB
 
 set_pull  : SET_IDE PULL_OP primary SC
 set_push : SET_IDE PUSH_OP primary SC
@@ -97,7 +98,7 @@ set_unary_op : POWERSET_OP
 basic_addition_op : PLUS_OP|MINUS_OP
 basic_multiplication_op : MULTIPLY_OP|DIVIDE_OP|MOD_OP
 
-primary : NUMBER | STRING | SET | IDENTIFIER | SET_IDE |  STR_IDE 
+primary : NUMBER | STRING | SET_INIT | IDENTIFIER | SET_IDE |  STR_IDE 
 
 %%
 #include "lex.yy.c"
