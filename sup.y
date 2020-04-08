@@ -1,4 +1,4 @@
-%token  WHILE SET_IDE STR_IDE FOR RETURN PRINT IF ELSE FUNCTION  IDENTIFIER NUMBER STRING SET INPUT ASSN_OP DIFF_OP UNION_OP CARTESIAN_OP INTERSECTION_OP PULL_OP PUSH_OP CARDINALITY_OP POWERSET_OP SET_CONTAINS SET_DELETE LP RP LB RB COMMA COLON SC PLUS_OP MULTIPLY_OP DIVIDE_OP MOD_OP MINUS_OP AND OR LT LEQ GT GEQ EE NE ARROW
+%token  WHILE FUNC SET_IDE STR_IDE FOR RETURN PRINT IF ELSE FUNCTION  IDENTIFIER NUMBER STRING SET INPUT ASSN_OP DIFF_OP UNION_OP CARTESIAN_OP INTERSECTION_OP PULL_OP PUSH_OP CARDINALITY_OP POWERSET_OP SET_CONTAINS SET_DELETE LP RP LB RB COMMA COLON SC PLUS_OP MULTIPLY_OP DIVIDE_OP MOD_OP MINUS_OP AND OR LT LEQ GT GEQ EE NE ARROW
 
 %nonassoc LESS_ELSE
 %nonassoc ELSE
@@ -12,7 +12,7 @@ list_basic :  func_decl | stmt
 
 func_decl  : FUNCTION IDENTIFIER LP argument_list RP block | FUNCTION IDENTIFIER LP RP block
 
-argument_list : primary | argument_list COMMA primary
+argument_list : primary | argument_list COMMA primary | LB argument_list RB
 
 
 
@@ -60,7 +60,8 @@ assn_stmt  : string_assn SC | set_assn  SC | number_assn SC
 expr_stmt :expr SC
 expr : number_expr | set_expr 
 
-string_assn : STR_IDE ASSN_OP STRING | STR_IDE ASSN_OP INPUT LP RP| STR_IDE ASSN_OP INPUT LP STRING RP
+string_assn : STR_IDE ASSN_OP STRING | STR_IDE ASSN_OP INPUT LP RP| STR_IDE ASSN_OP INPUT LP STRING RP | STR_IDE ASSN_OP STR_IDE | FUNC STR_IDE LP argument_list RP | FUNC STR_IDE LP RP
+		
 
 
 
@@ -70,16 +71,16 @@ number_assn : IDENTIFIER ASSN_OP number_expr
 number_expr :  number_expr general_comp_op number_addt | number_addt
 number_addt :  number_addt basic_addition_op number_mult | number_mult 
 number_mult  :   number_mult basic_multiplication_op number_call | number_call
-number_call : IDENTIFIER LP argument_list RP | IDENTIFIER LP RP |  number_factor
-number_factor  :  NUMBER | IDENTIFIER | LP number_expr RP | set_size | INPUT LP RP | INPUT LP STRING RP 
+number_call : 	FUNC IDENTIFIER LP argument_list RP | FUNC IDENTIFIER LP RP | number_basic
+number_basic  :  NUMBER | IDENTIFIER | LP number_expr RP | set_size | INPUT LP RP | INPUT LP STRING RP
 
 
-set_assn : IDENTIFIER ASSN_OP set_expr |  SET_IDE ASSN_OP set_expr
+set_assn : SET_IDE ASSN_OP set_expr | IDENTIFIER ASSN_OP set_expr
 set_expr :  set_expr  general_comp_op set_arith | set_arith
 set_arith :  set_arith  set_arith_op set_unary | set_unary 
-set_unary  :   set_unary_op set_call | set_call
-set_call : SET_IDE LP argument_list RP |SET_IDE LP RP | SET_IDE ARROW LP argument_list RP | contain_expr | set_basic
-set_basic  :  SET | SET_IDE  | LP set_expr RP 
+set_unary  :   set_unary_op set_basic | set_call
+set_call : FUNC SET_IDE LP argument_list RP | FUNC SET_IDE LP RP | set_basic
+set_basic  :  SET | SET_IDE | LP set_expr RP | contain_expr |  LB argument_list RB 
 
 
 
@@ -97,8 +98,6 @@ basic_addition_op : PLUS_OP|MINUS_OP
 basic_multiplication_op : MULTIPLY_OP|DIVIDE_OP|MOD_OP
 
 primary : NUMBER | STRING | SET | IDENTIFIER | SET_IDE |  STR_IDE 
-
-
 
 %%
 #include "lex.yy.c"

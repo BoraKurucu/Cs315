@@ -32,6 +32,7 @@ input		            return(INPUT);
 setContains         return(SET_CONTAINS);
 setDelete	          return(SET_DELETE);
 {number}            return(NUMBER);
+\?			return(FUNC);
 ${alphanumeric} 	return(SET_IDE);
 ~{alphanumeric}		return(STR_IDE);
 {alphanumeric}      return(IDENTIFIER);
