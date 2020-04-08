@@ -1,0 +1,62 @@
+%option yylineno
+letter        [a-zA-Z]
+digit         [0-9]
+signs         [+-]
+number        {signs}?{digit}*(\.)?{digit}+
+alphanumeric  {letter}+({digit}|{letter})*
+string        \"[^\"]*\"
+element       ({number}|{string}|{alphanumeric})
+set           \{(({element}\,)*{element})?\}
+%%
+\&\&                return(AND);
+\|\|                return(OR);
+"//".* 	            ;
+{set}               return(SET_INIT);
+while               return(WHILE);
+for                 return(FOR);
+return              return(RETURN);
+print               return(PRINT);
+if                  return(IF);
+else                return(ELSE);
+function            return(FUNCTION);                  
+input		            return(INPUT);
+\=                  return(ASSN_OP);
+\:\-		            return(DIFF_OP);
+\:\+		            return(UNION_OP);
+\:x                return(CARTESIAN_OP);
+\:\&                return(INTERSECTION_OP);
+\>\>		            return(PULL_OP);
+\<\<                return(PUSH_OP);
+\#                  return(CARDINALITY_OP);
+\^                  return(POWERSET_OP);
+setContains         return(SET_CONTAINS);
+setDelete	          return(SET_DELETE);
+{number}            return(NUMBER);
+\?			return(FUNC);
+${alphanumeric} 	return(SET_IDE);
+~{alphanumeric}		return(STR_IDE);
+{alphanumeric}      return(IDENTIFIER);
+{string}            return(STRING);
+\(                  return(LP);
+\)                  return(RP);
+\{                  return(LB);
+\}                  return(RB);
+\,                  return(COMMA);
+\:                  return(COLON);
+\;                  return(SC);
+\+                  return(PLUS_OP);
+\*                  return(MULTIPLY_OP);
+\/                  return(DIVIDE_OP);
+\%                  return(MOD_OP);
+\-                  return(MINUS_OP);
+\<                  return(LT);
+\<\=                return(LEQ);
+\>                  return(GT);
+\>\=                return(GEQ);
+\=\=                return(EE);
+\!\=                return(NE);
+\-\>                return(ARROW); 
+
+[ \t\n]             ;
+%%
+int yywrap() { return 1; }
