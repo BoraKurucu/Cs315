@@ -1,8 +1,5 @@
-
 //this is a comment
-
-
-$eenbr = {1,2,3};
+$aset = {1,2,3};
 b = 50;
 c = 100;
 x = 10;
@@ -17,8 +14,6 @@ string1;
 string2;
 
 print("here");
-print("here");
-print("here");
 function f1() {
   print("here");
 }
@@ -29,20 +24,30 @@ function f2(a,b,c) {
   print(c);
   return a + b + c;
 }
-
+print(~c);
+function foo($a,$b,~c)
+{
+print(~c);
+return $b;
+}
 //basic assignments
 $set1 = {};
+$set2 = {1,2,3};
 $set1 = {1,2,3};
 $set1 = {"element"};
-$set1 = {"element1",2,3};
+$set1 = {"element",1,2,3};
+$set1 = {{{2,3},5} };
+$set1 = {"element1",{{2,3},5},3};
+$set1 = {{"element1"},{2,3}};
+$set1 = {{"element1"},{2,3},set2};
+$set1 = {{"element1"},{2,3},set2,3,"hello"};
+$set1 = {{{"element1"},{2,3},set2,3,"hello"}};
 int1 = 5;
 int2 = 24.7;
 ~string1 = "This is a string";
 ~string2 = "This is another string";
+~string1 = ~string2;
 $set2 = {1,2,3};
-
-
-
 
 //advanced assignments
 
@@ -82,11 +87,6 @@ if( a == 7)
 a = 8;
 }
 
-if (a < 5) {
-  a = 5;
-}
-
-
 if (a > 5 && a < 10 || a < 7 ) {
   a = 5;
 }
@@ -107,7 +107,7 @@ else
 }
 
 
-if (b == 100 && c<= 20  ) {
+if (b == 100 && c<= 20 && ( c < 10 || b > 7) && 8 ) {
   a = 5;
 }
 else
@@ -150,8 +150,8 @@ a = a + 3;
 }
 
 // function calls
-a = f2(a, b, c);
-f1();
+a = ? f2(a, b, c);
+?f1();
 
 int1 = input();
 string1 = input("example.txt");
@@ -178,6 +178,24 @@ x = $set1->setContains( {1,2,3,4,5,"hello"});
 if( x > 10 && y < 5 || y > 20)
 {
 print("Hello");
+} else if (a) {
+  a = 10;
+} else if (a && b) {
+  b = 10;
+} else if (a + 1) {
+  a = a + 2;
 }
 
+$set1 = ? $foo();
 
+for(i = 0; i < 10; i + 1)
+{
+print("For test");
+}
+
+while (i < 5)
+  a = 10;
+
+while (a && b) {
+  i = a + b;
+}

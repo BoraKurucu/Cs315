@@ -11,7 +11,7 @@ set           \{(({element}\,)*{element})?\}
 \&\&                return(AND);
 \|\|                return(OR);
 "//".* 	            ;
-{set}               return(SET);
+{set}               return(SET_INIT);
 while               return(WHILE);
 for                 return(FOR);
 return              return(RETURN);
@@ -32,6 +32,7 @@ input		            return(INPUT);
 setContains         return(SET_CONTAINS);
 setDelete	          return(SET_DELETE);
 {number}            return(NUMBER);
+\?			return(FUNC);
 ${alphanumeric} 	return(SET_IDE);
 ~{alphanumeric}		return(STR_IDE);
 {alphanumeric}      return(IDENTIFIER);
