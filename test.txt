@@ -192,3 +192,10 @@ for(i = 0; i < 10; i + 1)
 {
 print("For test");
 }
+
+while (i < 5)
+  a = 10;
+
+while (a && b) {
+  i = a + b;
+}

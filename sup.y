@@ -35,8 +35,7 @@ loop_stmt : for_stmt | while_stmt
 
 
 
-while_stmt : WHILE LP   expr   RP block |
-			   WHILE LP   expr   RP  expr_stmt
+while_stmt : WHILE LP   expr   RP stmt
 
 for_stmt : FOR LP assn_stmt  expr_stmt  expr RP stmt | FOR LP assn_stmt  SC  expr RP stmt | FOR LP assn_stmt  expr_stmt  assn RP stmt | iterative_for
 
