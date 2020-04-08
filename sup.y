@@ -12,7 +12,7 @@ list_basic :  func_decl | stmt
 
 func_decl  : FUNCTION IDENTIFIER LP argument_list RP block | FUNCTION IDENTIFIER LP RP block
 
-argument_list : primary | argument_list COMMA argument_list | LB argument_list RB 
+argument_list : primary | argument_list COMMA primary
 
 
 
@@ -97,7 +97,7 @@ set_unary_op : POWERSET_OP
 basic_addition_op : PLUS_OP|MINUS_OP
 basic_multiplication_op : MULTIPLY_OP|DIVIDE_OP|MOD_OP
 
-primary : NUMBER | STRING | SET_INIT | IDENTIFIER | SET_IDE |  STR_IDE 
+primary : NUMBER | STRING | IDENTIFIER | SET_IDE |  STR_IDE | SET
 
 %%
 #include "lex.yy.c"
